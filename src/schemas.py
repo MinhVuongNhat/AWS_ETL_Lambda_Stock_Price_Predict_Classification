@@ -2,7 +2,7 @@ import pandera.polars as pa
 import polars as pl
 
 # Định nghĩa Schema cho Polars DataFrame
-finance_schema = pa.DataFrameSchema({
+finance_strict_schema = pa.DataFrameSchema({
     "Date": pa.Column(pl.Date, nullable=False),
 
     "Year": pa.Column(pl.Int64, nullable=False),
