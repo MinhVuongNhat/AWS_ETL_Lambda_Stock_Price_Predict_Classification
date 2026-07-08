@@ -1,7 +1,13 @@
 .venv/
 
-tests/
-
 .git/
+.gitignore
 
+__pycache__/
+.env
 .vscode/
+
+tests/
+raw/
+processed/
+run_local_test.py
