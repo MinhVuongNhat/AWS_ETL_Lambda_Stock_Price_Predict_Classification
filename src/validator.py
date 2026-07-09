@@ -9,7 +9,7 @@ class DataValidationError(Exception):
 
 def validate_schema_contract(df: pl.DataFrame) -> pl.DataFrame:
     try:
-        # Pandera giờ chỉ là chốt chặn cuối, đảm bảo Data Warehouse không nhận rác.
+        # Pandera là chốt chặn cuối, đảm bảo Data Warehouse không nhận rác.
         return finance_strict_schema.validate(df)
     except Exception as e:
         logger.error(f"Dữ liệu Clean bị lệch Schema trước khi Load: {str(e)}")

@@ -11,3 +11,6 @@ tests/
 raw/
 processed/
 run_local_test.py
+
+collect_data_script/
+data/
