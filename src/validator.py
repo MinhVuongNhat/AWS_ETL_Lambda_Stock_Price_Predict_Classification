@@ -10,8 +10,7 @@ class DataValidationError(Exception):
 
 def validate_data(df: pl.DataFrame) -> pl.DataFrame:
     """
-    CHỈ KIỂM TRA: Quét toàn bộ Business Rules và đánh dấu lỗi vào cột 'invalid_reason'.
-    Không xóa hay loại bỏ dòng nào ở bước này.
+    Quét toàn bộ Business Rules và đánh dấu lỗi vào cột 'invalid_reason'.
     """
     try:
         logger.info("=== [VALIDATION STAGE] Bắt đầu rà soát dữ liệu & Business Rules ===")

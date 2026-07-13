@@ -1,8 +1,8 @@
 import os
 
 # S3 Configuration
-RAW_BUCKET = os.environ.get('RAW_BUCKET', 'my-finance-raw-bucket')
-PROCESSED_BUCKET = os.environ.get('PROCESSED_BUCKET', 'my-finance-processed-bucket')
+RAW_BUCKET = os.environ.get('RAW_BUCKET', 'my-nasdaq-stock-market-raw-2026-430970051812-ap-southeast-1-an')
+PROCESSED_BUCKET = os.environ.get('PROCESSED_BUCKET', 'my-nasdaq-stock-processed-2026-430970051812-ap-southeast-1-an')
 QUARANTINE_BUCKET = os.environ.get('QUARANTINE_BUCKET', PROCESSED_BUCKET)
 CLEANSED_BUCKET = os.environ.get('CLEANSED_BUCKET', PROCESSED_BUCKET)
 

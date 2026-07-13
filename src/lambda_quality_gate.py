@@ -40,7 +40,7 @@ def lambda_handler(event, context):
         report_df = pl.DataFrame([metrics])
         write_csv_to_s3(report_df, PROCESSED_BUCKET, f"{REPORT_PREFIX}report_{filename.replace('.parquet', '')}.csv")
 
-        # 5. LƯU DỮ LIỆU SẠCH (Vào vùng đệm Cleansed - KHÔNG biến đổi Feature)
+        # 5. LƯU DỮ LIỆU SẠCH
         if clean_df.height > 0:
             final_clean_df = verify_clean_schema_contract(clean_df) # Chốt chặn Schema
             write_parquet_to_s3(final_clean_df, CLEANSED_BUCKET, f"{CLEANSED_PREFIX}{filename}")

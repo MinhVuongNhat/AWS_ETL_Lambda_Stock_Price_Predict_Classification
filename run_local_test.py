@@ -13,7 +13,7 @@ from quarantine import split_valid_invalid
 from report import generate_quality_report, save_batch_quality_report
 from transform import transform_pipeline
 
-# --- CẤU HÌNH ĐƯỜNG DẪN PATHLIB ---
+# Cấu hình đường dẫn padlib
 PROJECT_ROOT = Path(__file__).resolve().parent
 DATA_DIR = PROJECT_ROOT / "data"
 
@@ -88,7 +88,7 @@ def run_local_batch():
     # ==========================================
     # GIAI ĐOẠN 2: MÔ PHỎNG BATCH ETL JOB ĐÊM
     # ==========================================
-    print("\n🚀 KHỞI ĐỘNG BATCH ETL JOB ĐÊM...")
+    print("\n KHỞI ĐỘNG BATCH ETL JOB ĐÊM...")
     
     # Lúc này glob("*.parquet") sẽ hoạt động hoàn hảo vì file nằm ngay trong Cleansed
     cleansed_files = list(CLEANSED_DIR.glob("*.parquet"))

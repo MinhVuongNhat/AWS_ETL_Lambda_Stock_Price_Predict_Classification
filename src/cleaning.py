@@ -8,9 +8,9 @@ class DataCleaningError(Exception):
 
 def clean_data(df: pl.DataFrame) -> tuple[pl.DataFrame, int]:
     """
-    CHỈ LÀM: Sửa các lỗi chắc chắn sửa được, chuẩn hóa kiểu dữ liệu, xóa trùng lặp.
-    KHÔNG QUYẾT ĐỊNH dữ liệu hợp lệ hay không (không loại bỏ dòng lỗi nghiệp vụ).
-     Trả về: (df_cleaned, duplicate_count)
+    Sửa các lỗi chắc chắn sửa được, chuẩn hóa kiểu dữ liệu, xóa trùng lặp.
+    không loại bỏ dòng lỗi nghiệp vụ.
+    Trả về: (df_cleaned, duplicate_count)
     """
     try:
         original_rows = df.height

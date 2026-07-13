@@ -10,7 +10,7 @@ logger = get_logger(__name__)
 def lambda_handler(event, context):
     """Triggered bởi Cronjob lúc 00:00 mỗi ngày."""
     try:
-        logger.info("🚀 KHỞI ĐỘNG NIGHTLY BATCH ETL JOB...")
+        logger.info(" KHỞI ĐỘNG NIGHTLY BATCH ETL JOB...")
         
         # 1. Quét toàn bộ file trong thư mục đệm (Cleansed)
         cleansed_keys = list_parquet_files_in_s3(CLEANSED_BUCKET, CLEANSED_PREFIX)
@@ -32,9 +32,8 @@ def lambda_handler(event, context):
         # 3. TRANSFORM (Feature Engineering & Normalize & Partition)
         partitioned_data = transform_pipeline(master_df)
         
-        # 4. LOAD (Ghi đè 65 file ra thư mục Processed)
+        # 4. LOAD (Ghi đè file ra thư mục Processed)
         for year, part_df in partitioned_data.items():
-            # Theo kiến trúc của bạn, ghi thẳng file f"{year}.parquet" (vd: 1962.parquet)
             output_key = f"{PROCESSED_PREFIX}{year}.parquet" 
             write_parquet_to_s3(part_df, PROCESSED_BUCKET, output_key)
             

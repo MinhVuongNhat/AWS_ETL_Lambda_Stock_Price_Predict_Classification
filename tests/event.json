@@ -1,0 +1,14 @@
+{
+  "Records": [
+    {
+      "s3": {
+        "bucket": {
+          "name": "my-nasdaq-stock-market-raw-2026-430970051812-ap-southeast-1-an"
+        },
+        "object": {
+          "key": "raw/AAPL.parquet"
+        }
+      }
+    }
+  ]
+}
