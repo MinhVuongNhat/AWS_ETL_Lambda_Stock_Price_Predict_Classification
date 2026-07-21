@@ -16,6 +16,17 @@ def apply_feature_engineering(df: pl.DataFrame) -> pl.DataFrame:
 
     # Đảm bảo dữ liệu được sắp xếp theo thời gian trước khi tính rolling/EWM
     df = df.sort(["Symbol", "Date"])
+    
+    # Label: 1 nếu giá đóng cửa T+1 > T, ngược lại 0
+    df = df.with_columns([
+        pl.col("Close").shift(-1).over("Symbol").alias("_Next_Close"),
+    ])
+    df = df.with_columns([
+        (pl.col("_Next_Close") > pl.col("Close"))
+        .cast(pl.Int8)
+        .alias("Label")
+    ])
+    df = df.drop("_Next_Close")
 
     # Bước 1: Trend + Lag + Return — tính song song trong 1 pass
     df = df.with_columns([
