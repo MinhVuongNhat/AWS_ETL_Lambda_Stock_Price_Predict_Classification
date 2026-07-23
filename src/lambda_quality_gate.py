@@ -36,8 +36,16 @@ def lambda_handler(event, context):
             logger.info(f"Bỏ qua file không phải Parquet: {source_key}")
             return {'statusCode': 200, 'body': 'Skipped'}
 
-        # Lấy ngày xử lý để làm partition cho cleansed_daily/
-        today_str = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+        # Lấy ngày xử lý từ S3 key path: raw/{trade_date}/TICKER.parquet
+        # Trong replay mode, date này là ngày lịch sử chứ không phải hôm nay.
+        # Fallback về datetime.now() nếu không parse được từ path.
+        try:
+            key_parts = source_key.strip('/').split('/')
+            potential_date = key_parts[-2]  # phần tử áp cuối
+            datetime.strptime(potential_date, '%Y-%m-%d')  # validate
+            today_str = potential_date
+        except (ValueError, IndexError):
+            today_str = datetime.now(timezone.utc).strftime('%Y-%m-%d')
 
         # 1. EXTRACT
         raw_df = read_parquet_from_s3(source_bucket, source_key)

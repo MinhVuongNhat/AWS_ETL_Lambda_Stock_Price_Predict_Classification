@@ -1,6 +1,5 @@
 import os
 
-# S3 Configuration
 RAW_BUCKET = os.environ.get('RAW_BUCKET', 'my-nasdaq-stock-market-raw-2026-430970051812-ap-southeast-1-an')
 PROCESSED_BUCKET = os.environ.get('PROCESSED_BUCKET', 'my-nasdaq-stock-processed-2026-430970051812-ap-southeast-1-an')
 QUARANTINE_BUCKET = os.environ.get('QUARANTINE_BUCKET', PROCESSED_BUCKET)
@@ -28,7 +27,24 @@ TICKERS_S3_KEY = os.environ.get('TICKERS_S3_KEY', 'config/tickers.json')
 
 # Fan-out Architecture (SQS)
 # URL của SQS Queue mà Producer gửi messages vào
-SQS_QUEUE_URL = os.environ.get('SQS_QUEUE_URL', '')
+SQS_QUEUE_URL = os.environ.get('SQS_QUEUE_URL', 'daily-collector-queue')
 
 # Số tickers mỗi SQS message / Lambda Consumer invocation
 CHUNK_SIZE = int(os.environ.get('CHUNK_SIZE', '100'))
+
+# Replay Simulator Configuration
+# Simulation Bucket: nơi pipeline replay ghi raw/, cleansed_daily/, processed/
+# Tách hoàn toàn khỏi training bucket để không ảnh hưởng data train mô hình
+SIM_BUCKET = os.environ.get('SIM_BUCKET', 'my-nasdaq-stock-simulation-2026-430970051812-ap-southeast-1-an')
+
+# Source Bucket: nơi chứa processed/YEAR.parquet làm nguồn data lịch sử
+# Mặc định trỏ về training PROCESSED_BUCKET (đã có data backfill)
+SOURCE_PROCESSED_BUCKET = os.environ.get('SOURCE_PROCESSED_BUCKET', PROCESSED_BUCKET)
+
+# S3 key của file replay_state.json (lưu tiến độ replay)
+# Đặt trong SIM_BUCKET/config/replay_state.json
+REPLAY_STATE_BUCKET = os.environ.get('REPLAY_STATE_BUCKET', SIM_BUCKET)
+REPLAY_STATE_KEY = os.environ.get('REPLAY_STATE_KEY', 'config/replay_state.json')
+
+# Khoảng thời gian mỗi lần replay (phút) — tương ứng với EventBridge schedule
+REPLAY_INTERVAL_MINUTES = int(os.environ.get('REPLAY_INTERVAL_MINUTES', '1'))
