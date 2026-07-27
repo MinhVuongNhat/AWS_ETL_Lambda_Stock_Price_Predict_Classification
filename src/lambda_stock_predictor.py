@@ -42,7 +42,7 @@ def load_model():
 
     local_path = "/tmp/xgboost_model.json"
     s3_client.download_file(MODEL_BUCKET, f"{MODEL_PREFIX}model.json", local_path)
-    _model_cache = xgb.XGBClassifier()
+    _model_cache = xgb.Booster()
     _model_cache.load_model(local_path)
     logger.info("✅ Tải model thành công.")
     return _model_cache, _feature_names_cache
@@ -171,9 +171,10 @@ def lambda_handler(event, context):
             return {"statusCode": 200, "body": "No valid data for prediction"}
 
         # Predict
-        X      = df_clean.select(feature_names).to_pandas()
-        y_pred = model.predict(X)
-        y_prob = model.predict_proba(X)[:, 1]
+        X       = df_clean.select(feature_names).to_pandas()
+        dmatrix = xgb.DMatrix(X)
+        y_prob  = model.predict(dmatrix)
+        y_pred  = (y_prob >= 0.5).astype(int)
 
         df_result = df_clean.select(["Symbol"]).with_columns([
             pl.Series("Prediction",  y_pred, dtype=pl.Int8),
