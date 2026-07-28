@@ -1,4 +1,5 @@
 import logging
+import os
 import sys
 
 def get_logger(name: str) -> logging.Logger:
@@ -6,7 +7,9 @@ def get_logger(name: str) -> logging.Logger:
     
     # Tránh việc add handler nhiều lần nếu logger đã tồn tại
     if not logger.handlers:
-        logger.setLevel(logging.INFO)
+        log_level_str = os.environ.get('LOG_LEVEL', 'INFO').upper()
+        log_level = getattr(logging, log_level_str, logging.INFO)
+        logger.setLevel(log_level)
         
         # Định dạng dòng log
         formatter = logging.Formatter(

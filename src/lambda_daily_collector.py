@@ -104,13 +104,13 @@ def fetch_daily_data(ticker: str, trade_date: str) -> Optional[pl.DataFrame]:
     logger.info(f"  [{ticker}] Tải thành công: {df.height} dòng.")
     return df
 
-# Helper: Upload DataFrame lên S3 dưới dạng Parquet
-def upload_df_to_s3_raw(df: pl.DataFrame, ticker: str, trade_date: str) -> str:
+# Helper: Upload DataFrame gộp của cả chunk lên S3 dưới dạng Parquet
+def upload_chunk_to_s3_raw(df: pl.DataFrame, trade_date: str, chunk_index: int) -> str:
     """
-    Ghi DataFrame thành Parquet và upload lên s3://RAW_BUCKET/raw/YYYY-MM-DD/TICKER.parquet
-    Trả về S3 key đã upload.
+    Ghi DataFrame gộp của cả chunk thành Parquet và upload 1 file duy nhất lên s3://RAW_BUCKET/raw/YYYY-MM-DD/chunk_{chunk_index}.parquet.
+    Tối ưu hóa chi phí: Giảm số lượng S3 PUT requests và Quality Gate triggers lên tới 99%.
     """
-    s3_key = f"{RAW_PREFIX}{trade_date}/{ticker}.parquet"
+    s3_key = f"{RAW_PREFIX}{trade_date}/chunk_{chunk_index if chunk_index >= 0 else '0'}.parquet"
     buffer = io.BytesIO()
     df.write_parquet(buffer, use_pyarrow=True)
     buffer.seek(0)
@@ -120,19 +120,17 @@ def upload_df_to_s3_raw(df: pl.DataFrame, ticker: str, trade_date: str) -> str:
         Key=s3_key,
         Body=buffer.getvalue(),
     )
-    logger.info(f"  [{ticker}] ✅ Đã upload: s3://{RAW_BUCKET}/{s3_key}")
+    logger.info(f"  ✅ Đã upload batch ({df.height} dòng, {df['Symbol'].n_unique()} tickers) -> s3://{RAW_BUCKET}/{s3_key}")
     return s3_key
 
 # Lambda Handler
-def _process_batch(tickers: list[str], trade_date: str) -> dict:
+def _process_batch(tickers: list[str], trade_date: str, chunk_index: int = -1) -> dict:
     """
-    Xử lý một batch tickers: download từ yfinance và upload lên S3.
-    Trả về dict tổng kết: {uploaded, skipped, failed_tickers}
-    Không raise exception - lỗi của từng ticker được log và ghi vào failed_tickers.
+    Xử lý một batch tickers: download từ yfinance, gộp lại và upload 1 file duy nhất lên S3.
     """
-    uploaded_keys = []
     skipped_tickers = []
     failed_tickers = []
+    collected_dfs = []
 
     for ticker in tickers:
         try:
@@ -140,14 +138,19 @@ def _process_batch(tickers: list[str], trade_date: str) -> dict:
             if df is None or df.height == 0:
                 skipped_tickers.append(ticker)
                 continue
-            s3_key = upload_df_to_s3_raw(df, ticker, trade_date)
-            uploaded_keys.append(s3_key)
+            collected_dfs.append(df)
         except Exception as e:
             logger.error(f"  [{ticker}] ❌ Lỗi: {str(e)}")
             failed_tickers.append(ticker)
 
+    uploaded_count = 0
+    if collected_dfs:
+        combined_df = pl.concat(collected_dfs, how="diagonal_relaxed")
+        upload_chunk_to_s3_raw(combined_df, trade_date, chunk_index)
+        uploaded_count = combined_df["Symbol"].n_unique()
+
     return {
-        "uploaded": len(uploaded_keys),
+        "uploaded": uploaded_count,
         "skipped": len(skipped_tickers),
         "failed_tickers": failed_tickers,
     }
@@ -180,7 +183,7 @@ def lambda_handler(event, context):
             )
 
             # Xử lý batch tickers
-            result = _process_batch(tickers, trade_date)
+            result = _process_batch(tickers, trade_date, chunk_index)
 
             summary = (
                 f"Chunk {chunk_index + 1}/{total_chunks} hoàn tất "

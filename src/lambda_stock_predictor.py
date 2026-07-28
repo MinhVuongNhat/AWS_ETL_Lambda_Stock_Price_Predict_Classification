@@ -117,27 +117,14 @@ def write_latest_summary(records: list[dict], date_str: str):
 
 
 def update_symbol_history(records: list[dict], date_str: str):
-    """Cập nhật lịch sử rolling 90 ngày cho từng mã"""
-    logger.info(f"Cập nhật lịch sử {len(records)} symbols...")
-    for rec in records:
-        symbol = rec["Symbol"]
-        key    = f"predictions/symbols/{symbol}/history.json"
-
-        history = read_json_s3(PROCESSED_BUCKET, key) or []
-
-        # Thêm bản ghi mới (tránh duplicate)
-        history = [h for h in history if h.get("Date") != date_str]
-        history.append({
-            "Date":        date_str,
-            "Prediction":  int(rec["Prediction"]),
-            "Probability": round(float(rec["Probability"]), 6)
-        })
-
-        # Giữ 90 ngày gần nhất
-        history = sorted(history, key=lambda h: h["Date"])[-90:]
-        write_json_s3(PROCESSED_BUCKET, key, history)
-
-    logger.info("✅ Cập nhật lịch sử xong.")
+    """
+    Tối ưu hóa chi phí: API Handler đọc lịch sử trực tiếp từ DynamoDB.
+    Hàm này giữ lại để lưu file backup tổng hợp 1 file duy nhất thay vì 3,000 file riêng lẻ.
+    """
+    logger.info(f"Ghi nhận lịch sử tổng hợp ngày {date_str} ({len(records)} symbols)...")
+    key = f"predictions/{date_str}/history_summary.json"
+    write_json_s3(PROCESSED_BUCKET, key, records)
+    logger.info("✅ Cập nhật lịch sử tổng hợp xong (1 S3 PUT request).")
 
 
 # Lambda Handler
@@ -183,7 +170,7 @@ def lambda_handler(event, context):
 
         records = df_result.to_dicts()
 
-        # Ghi vào tất cả destinations
+        # Ghi vào các destinations (Tối ưu hóa: chỉ tốn 3 S3 PUT + 1 DynamoDB batch write)
         logger.info("Bắt đầu ghi output...")
         write_daily_all(records, latest_date)
         write_latest_summary(records, latest_date)
