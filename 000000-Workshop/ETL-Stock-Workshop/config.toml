@@ -1,0 +1,40 @@
+# Change the default theme to be use when building the site with Hugo
+theme = "hugo-theme-learn"
+
+# For search functionality
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[params]
+  # Change default color scheme with a variant one. Can be "red", "blue", "green".
+  themeVariant = "workshop"
+  # Git hub repo link
+  editURL = ""
+  description = "AWS Serverless ETL Pipeline & Machine Learning - Stock Price Prediction on NASDAQ"
+  author = "MinhVuongNhat"
+  showVisitedLinks = true
+  disableBreadcrumb = false
+  disableNextPrev = false
+  
+[Languages]
+[Languages.en]
+title = "AWS ETL Stock Price Prediction"
+weight = 1
+label = "English"
+
+[[Languages.en.menu.shortcuts]]
+name = "<i class='fab fa-github'></i> GitHub Repo"
+identifier = "GitHub"
+url = "https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification"
+weight = 10
+
+[Languages.vi]
+title = "AWS ETL Dự đoán Giá Cổ Phiếu"
+weight = 2
+label = "Tiếng Việt"
+
+[[Languages.vi.menu.shortcuts]]
+name = "<i class='fab fa-github'></i> GitHub Repo"
+identifier = "GitHub"
+url = "https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification"
+weight = 10
