@@ -14,184 +14,268 @@
                 href="//localhost:1313/vi/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/4-ml-model/4.1-feature-engineering/</loc>
+    <loc>//localhost:1313/vi/5-workshop/5.4-ml-model/4.1-feature-engineering/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/4-ml-model/4.1-feature-engineering/"
+                href="//localhost:1313/5-workshop/5.4-ml-model/4.1-feature-engineering/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/4-ml-model/4.1-feature-engineering/"
+                href="//localhost:1313/vi/5-workshop/5.4-ml-model/4.1-feature-engineering/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/1-introduce/</loc>
+    <loc>//localhost:1313/vi/5-workshop/5.3-data-pipeline/3.1-lambda-collector/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/1-introduce/"
+                href="//localhost:1313/5-workshop/5.3-data-pipeline/3.1-lambda-collector/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/1-introduce/"
+                href="//localhost:1313/vi/5-workshop/5.3-data-pipeline/3.1-lambda-collector/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/3-data-pipeline/3.1-lambda-collector/</loc>
+    <loc>//localhost:1313/vi/1-worklog/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/3-data-pipeline/3.1-lambda-collector/"
+                href="//localhost:1313/1-worklog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/3-data-pipeline/3.1-lambda-collector/"
+                href="//localhost:1313/vi/1-worklog/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/2-preparation/2.1-aws-account/</loc>
+    <loc>//localhost:1313/vi/5-workshop/5.2-prerequiste/2.1-aws-account/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2-preparation/2.1-aws-account/"
+                href="//localhost:1313/5-workshop/5.2-prerequiste/2.1-aws-account/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2-preparation/2.1-aws-account/"
+                href="//localhost:1313/vi/5-workshop/5.2-prerequiste/2.1-aws-account/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/2-preparation/</loc>
+    <loc>//localhost:1313/vi/5-workshop/5.1-workshop-overview/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2-preparation/"
+                href="//localhost:1313/5-workshop/5.1-workshop-overview/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2-preparation/"
+                href="//localhost:1313/vi/5-workshop/5.1-workshop-overview/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/4-ml-model/4.2-train-deploy/</loc>
+    <loc>//localhost:1313/vi/5-workshop/5.2-prerequiste/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/4-ml-model/4.2-train-deploy/"
+                href="//localhost:1313/5-workshop/5.2-prerequiste/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/4-ml-model/4.2-train-deploy/"
+                href="//localhost:1313/vi/5-workshop/5.2-prerequiste/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/3-data-pipeline/3.2-quality-gate/</loc>
+    <loc>//localhost:1313/vi/2-proposal/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/3-data-pipeline/3.2-quality-gate/"
+                href="//localhost:1313/2-proposal/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/3-data-pipeline/3.2-quality-gate/"
+                href="//localhost:1313/vi/2-proposal/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/2-preparation/2.2-s3-buckets/</loc>
+    <loc>//localhost:1313/vi/5-workshop/5.4-ml-model/4.2-train-deploy/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2-preparation/2.2-s3-buckets/"
+                href="//localhost:1313/5-workshop/5.4-ml-model/4.2-train-deploy/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2-preparation/2.2-s3-buckets/"
+                href="//localhost:1313/vi/5-workshop/5.4-ml-model/4.2-train-deploy/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/3-data-pipeline/</loc>
+    <loc>//localhost:1313/vi/5-workshop/5.3-data-pipeline/3.2-quality-gate/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/3-data-pipeline/"
+                href="//localhost:1313/5-workshop/5.3-data-pipeline/3.2-quality-gate/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/3-data-pipeline/"
+                href="//localhost:1313/vi/5-workshop/5.3-data-pipeline/3.2-quality-gate/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/3-data-pipeline/3.3-daily-etl/</loc>
+    <loc>//localhost:1313/vi/5-workshop/5.2-prerequiste/2.2-s3-buckets/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/3-data-pipeline/3.3-daily-etl/"
+                href="//localhost:1313/5-workshop/5.2-prerequiste/2.2-s3-buckets/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/3-data-pipeline/3.3-daily-etl/"
+                href="//localhost:1313/vi/5-workshop/5.2-prerequiste/2.2-s3-buckets/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/2-preparation/2.3-sqs-queue/</loc>
+    <loc>//localhost:1313/vi/3-blogsposted/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2-preparation/2.3-sqs-queue/"
+                href="//localhost:1313/3-blogsposted/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2-preparation/2.3-sqs-queue/"
+                href="//localhost:1313/vi/3-blogsposted/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/4-ml-model/</loc>
+    <loc>//localhost:1313/vi/5-workshop/5.3-data-pipeline/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/4-ml-model/"
+                href="//localhost:1313/5-workshop/5.3-data-pipeline/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/4-ml-model/"
+                href="//localhost:1313/vi/5-workshop/5.3-data-pipeline/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/2-preparation/2.4-iam-roles/</loc>
+    <loc>//localhost:1313/vi/5-workshop/5.3-data-pipeline/3.3-daily-etl/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/2-preparation/2.4-iam-roles/"
+                href="//localhost:1313/5-workshop/5.3-data-pipeline/3.3-daily-etl/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/2-preparation/2.4-iam-roles/"
+                href="//localhost:1313/vi/5-workshop/5.3-data-pipeline/3.3-daily-etl/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/5-api-dashboard/</loc>
+    <loc>//localhost:1313/vi/5-workshop/5.2-prerequiste/2.3-sqs-queue/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/5-api-dashboard/"
+                href="//localhost:1313/5-workshop/5.2-prerequiste/2.3-sqs-queue/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/5-api-dashboard/"
+                href="//localhost:1313/vi/5-workshop/5.2-prerequiste/2.3-sqs-queue/"
                 />
   </url><url>
-    <loc>//localhost:1313/vi/6-cleanup/</loc>
+    <loc>//localhost:1313/vi/5-workshop/5.4-ml-model/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="//localhost:1313/6-cleanup/"
+                href="//localhost:1313/5-workshop/5.4-ml-model/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="//localhost:1313/vi/6-cleanup/"
+                href="//localhost:1313/vi/5-workshop/5.4-ml-model/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/4-eventparticipated/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/4-eventparticipated/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/4-eventparticipated/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/5-workshop/5.2-prerequiste/2.4-iam-roles/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/5-workshop/5.2-prerequiste/2.4-iam-roles/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/5-workshop/5.2-prerequiste/2.4-iam-roles/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/5-workshop/5.5-api-dashboard/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/5-workshop/5.5-api-dashboard/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/5-workshop/5.5-api-dashboard/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/5-workshop/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/5-workshop/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/5-workshop/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/5-workshop/5.6-cleanup/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/5-workshop/5.6-cleanup/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/5-workshop/5.6-cleanup/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/6-self-evaluation/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/6-self-evaluation/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/6-self-evaluation/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/7-feedback/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/7-feedback/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/7-feedback/"
                 />
   </url><url>
     <loc>//localhost:1313/vi/categories/</loc>

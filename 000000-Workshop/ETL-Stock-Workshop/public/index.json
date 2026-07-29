@@ -1,6 +1,6 @@
 [
 {
-	"uri": "//localhost:1313/2-preparation/2.1-aws-account/",
+	"uri": "//localhost:1313/5-workshop/5.2-prerequiste/2.1-aws-account/",
 	"title": "AWS Account &amp; Permissions",
 	"tags": [],
 	"description": "",
@@ -8,108 +8,157 @@
 },
 {
 	"uri": "//localhost:1313/",
-	"title": "AWS ETL Stock Price Prediction",
+	"title": "AWS ETL Stock Price Prediction — Lab Report",
 	"tags": [],
 	"description": "",
-	"content": "AWS Serverless ETL Pipeline \u0026amp; Stock Price Prediction Overview In this workshop, you will build a fully automated serverless Big Data Pipeline on AWS to collect, process, and classify NASDAQ stock price movements using Machine Learning (XGBoost).\n📌 NOTE: This image placeholder requires an architecture diagram.\n[TODO: Add system architecture diagram image here — e.g., /images/0-home/architecture-overview.png]\nContent Introduction Preparation Data Pipeline Machine Learning API \u0026amp; Dashboard Clean up resources "
+	"content": "AWS ETL Lambda Stock Price Prediction — Lab Report Overview This is the lab report for the project AWS Serverless ETL Pipeline \u0026amp; Machine Learning — Stock Price Prediction on NASDAQ, built on AWS Lambda, S3, SQS, and XGBoost.\nContent Work Log Proposal Blogs Posted Events Participated Workshop Self Evaluation Feedback "
 },
 {
-	"uri": "//localhost:1313/4-ml-model/4.1-feature-engineering/",
+	"uri": "//localhost:1313/5-workshop/5.4-ml-model/4.1-feature-engineering/",
 	"title": "Feature Engineering",
 	"tags": [],
 	"description": "",
-	"content": "Feature Engineering — 16 Technical Indicators Feature Engineering is the most critical step in the ML pipeline. src/transform.py computes 16 technical indicators from historical OHLCV data using Polars.\n16 Technical Indicators Group 1: Trend\nIndicator Formula Meaning SMA_5 Simple Moving Average (5-day) Short-term trend SMA_20 Simple Moving Average (20-day) Medium-term trend EMA_12 Exponential Moving Average span=12 Fast reaction to price changes EMA_26 Exponential Moving Average span=26 Slower long-term trend Group 2: Momentum\nIndicator Formula Meaning MACD EMA_12 - EMA_26 Trend confirmation \u0026amp; reversal signals MACD_Signal EMA_9 of MACD MACD signal line MACD_Hist MACD - MACD_Signal MACD histogram bar RSI_14 Wilder\u0026rsquo;s Smoothing, window=14 Overbought (\u0026gt;70) / Oversold (\u0026lt;30) indicator Group 3: Volatility\nIndicator Formula Meaning BB_Upper SMA_20 + 2 × STD_20 Bollinger Bands upper band BB_Lower SMA_20 - 2 × STD_20 Bollinger Bands lower band BB_Width (BB_Upper - BB_Lower) / SMA_20 Band width — measures volatility Intraday_Volatility (High - Low) / Open Intraday price swing range Group 4: Lag \u0026amp; Return\nIndicator Formula Meaning Lag_Close_1 Close at T-1 Pattern from yesterday Lag_Close_2 Close at T-2 Pattern from 2 days ago Lag_Close_3 Close at T-3 Pattern from 3 days ago Daily_Return Adj_Close / Adj_Close(T-1) - 1 Daily return rate Label — Classification Target Label = 1 if Close(T+1) \u0026gt; Close(T) → PRICE UP prediction Label = 0 if Close(T+1) ≤ Close(T) → PRICE DOWN prediction [TODO: Add example chart of technical indicators — /images/4.1/technical-indicators-chart.png]\n"
+	"content": "Feature Engineering — 16 Technical Indicators Feature Engineering is the most critical step in the ML pipeline. src/transform.py computes 16 technical indicators from historical OHLCV data using Polars.\n16 Technical Indicators Group 1: Trend\nIndicator Formula Meaning SMA_5 Simple Moving Average (5-day) Short-term trend SMA_20 Simple Moving Average (20-day) Medium-term trend EMA_12 Exponential Moving Average span=12 Fast reaction to price changes EMA_26 Exponential Moving Average span=26 Slower long-term trend Group 2: Momentum\nIndicator Formula Meaning MACD EMA_12 - EMA_26 Trend confirmation \u0026amp; reversal signals MACD_Signal EMA_9 of MACD MACD signal line MACD_Hist MACD - MACD_Signal MACD histogram bar RSI_14 Wilder\u0026rsquo;s Smoothing, window=14 Overbought (\u0026gt;70) / Oversold (\u0026lt;30) indicator Group 3: Volatility\nIndicator Formula Meaning BB_Upper SMA_20 + 2 × STD_20 Bollinger Bands upper band BB_Lower SMA_20 - 2 × STD_20 Bollinger Bands lower band BB_Width (BB_Upper - BB_Lower) / SMA_20 Band width — measures volatility Intraday_Volatility (High - Low) / Open Intraday price swing range Group 4: Lag \u0026amp; Return\nIndicator Formula Meaning Lag_Close_1 Close at T-1 Pattern from yesterday Lag_Close_2 Close at T-2 Pattern from 2 days ago Lag_Close_3 Close at T-3 Pattern from 3 days ago Daily_Return Adj_Close / Adj_Close(T-1) - 1 Daily return rate Label — Classification Target Label = 1 if Close(T+1) \u0026gt; Close(T) → PRICE UP prediction\rLabel = 0 if Close(T+1) ≤ Close(T) → PRICE DOWN prediction [TODO: Add example chart of technical indicators — /images/4.1/technical-indicators-chart.png]\n"
 },
 {
-	"uri": "//localhost:1313/1-introduce/",
-	"title": "Introduction",
-	"tags": [],
-	"description": "",
-	"content": "What is this Workshop About? This workshop guides you through building a fully automated Serverless Big Data Pipeline on AWS to predict NASDAQ stock price trends using Machine Learning.\nYou will practice:\nDesigning a Fan-Out Architecture using AWS Lambda + SQS. Building a Data Quality Gate to validate and isolate bad data. Performing Feature Engineering on financial time-series data using Polars. Training and deploying an XGBoost Classifier to predict stock movements. Exposing predictions via AWS API Gateway and visualizing with a Dashboard. AWS Services Used Service Role AWS Lambda Serverless compute for all pipeline stages Amazon S3 Storage for raw, cleansed, and processed data \u0026amp; models Amazon SQS Message queue for Fan-Out parallel processing Amazon EventBridge Daily cron trigger to kick off the pipeline Amazon API Gateway REST API to serve ML predictions Amazon ECR Docker image registry for Lambda containers System Architecture [TODO: Add architecture diagram image — /images/1-introduce/system-architecture.png]\nThe pipeline has three main flows:\nPipeline A – Historical Backfill: Collects historical NASDAQ stock data from 1962 to present, applies Feature Engineering, and stores it as yearly Apache Parquet files (processed/YYYY.parquet) in S3.\nPipeline B – Daily Increment: Runs every trading day — collects new data, validates it through a Quality Gate, appends to the processed Parquet, and triggers model re-scoring.\nPipeline C – Prediction \u0026amp; Serving: AWS Lambda loads the trained XGBoost model from S3 and serves real-time predictions via REST API and Dashboard.\nWorkshop Flow After completing this workshop, you will have a running end-to-end pipeline:\nEventBridge triggers lambda_daily_collector daily. The collector reads tickers.json and pushes chunks to SQS. lambda_collector_producer consumes SQS messages and fetches stock data from Yahoo Finance. lambda_quality_gate validates data — valid data goes to cleansed_daily/, bad data to quarantine/. lambda_daily_etl merges cleansed data into the main processed/ Parquet store. lambda_stock_predictor loads the XGBoost model and returns predictions via API Gateway. "
-},
-{
-	"uri": "//localhost:1313/3-data-pipeline/3.1-lambda-collector/",
+	"uri": "//localhost:1313/5-workshop/5.3-data-pipeline/3.1-lambda-collector/",
 	"title": "Lambda Daily Collector",
 	"tags": [],
 	"description": "",
 	"content": "Lambda Daily Collector — Fan-Out Producer lambda_daily_collector.py is the first Lambda Producer in Pipeline B. It is triggered by Amazon EventBridge on a daily schedule and:\nReads tickers.json from S3 to get the list of tracked stock tickers. Splits the list into chunks (CHUNK_SIZE=100 tickers each). Sends each chunk as an SQS message to daily-collector-queue. [TODO: Add flow diagram: EventBridge → Lambda → SQS — /images/3.1/eventbridge-lambda-sqs-flow.png]\nStep 1: Create Lambda Function Go to AWS Lambda Console and create a new function:\nFunction name: nasdaq-daily-collector Container image: Select from ECR nasdaq-etl-lambda:latest CMD override: src.lambda_daily_collector.lambda_handler Execution role: nasdaq-etl-lambda-role Memory: 512 MB Timeout: 5 minutes Step 2: Configure Environment Variables In Configuration → Environment variables, add:\nKey Value PROCESSED_BUCKET my-nasdaq-stock-processed-2026-ap-southeast-1 SQS_QUEUE_URL https://sqs.ap-southeast-1.amazonaws.com/123456789012/daily-collector-queue TICKERS_S3_KEY config/tickers.json CHUNK_SIZE 100 AWS_REGION ap-southeast-1 Step 3: Set up EventBridge Trigger aws events put-rule \\ --name \u0026#34;nasdaq-daily-pipeline-trigger\u0026#34; \\ --schedule-expression \u0026#34;cron(0 0 ? * MON-FRI *)\u0026#34; \\ --state ENABLED \\ --region ap-southeast-1 The schedule cron(0 0 ? * MON-FRI *) means 0:00 UTC, Monday through Friday — after the US market closes.\n"
 },
 {
-	"uri": "//localhost:1313/2-preparation/2.2-s3-buckets/",
+	"uri": "//localhost:1313/1-worklog/",
+	"title": "Work Log",
+	"tags": [],
+	"description": "",
+	"content": "Work Log [Nhật ký công việc hàng tuần — ghi lại tiến độ, công việc đã hoàn thành và các vướng mắc gặp phải trong quá trình thực hiện dự án.]\nTuần Ngày Công việc Trạng thái "
+},
+{
+	"uri": "//localhost:1313/5-workshop/5.1-workshop-overview/",
+	"title": "Workshop Overview",
+	"tags": [],
+	"description": "",
+	"content": "What is this Workshop About? This workshop guides you through building a fully automated Serverless Big Data Pipeline on AWS to predict NASDAQ stock price trends using Machine Learning.\nYou will practice:\nDesigning a Fan-Out Architecture using AWS Lambda + SQS. Building a Data Quality Gate to validate and isolate bad data. Performing Feature Engineering on financial time-series data using Polars. Training and deploying an XGBoost Classifier to predict stock movements. Exposing predictions via AWS API Gateway and visualizing with a Dashboard. AWS Services Used Service Role AWS Lambda Serverless compute for all pipeline stages Amazon S3 Storage for raw, cleansed, and processed data \u0026amp; models Amazon SQS Message queue for Fan-Out parallel processing Amazon EventBridge Daily cron trigger to kick off the pipeline Amazon API Gateway REST API to serve ML predictions Amazon ECR Docker image registry for Lambda containers System Architecture [TODO: Add architecture diagram image — /images/1-introduce/system-architecture.png]\nThe pipeline has three main flows:\nPipeline A – Historical Backfill: Collects historical NASDAQ stock data from 1962 to present, applies Feature Engineering, and stores it as yearly Apache Parquet files (processed/YYYY.parquet) in S3.\nPipeline B – Daily Increment: Runs every trading day — collects new data, validates it through a Quality Gate, appends to the processed Parquet, and triggers model re-scoring.\nPipeline C – Prediction \u0026amp; Serving: AWS Lambda loads the trained XGBoost model from S3 and serves real-time predictions via REST API and Dashboard.\nWorkshop Flow After completing this workshop, you will have a running end-to-end pipeline:\nEventBridge triggers lambda_daily_collector daily. The collector reads tickers.json and pushes chunks to SQS. lambda_collector_producer consumes SQS messages and fetches stock data from Yahoo Finance. lambda_quality_gate validates data — valid data goes to cleansed_daily/, bad data to quarantine/. lambda_daily_etl merges cleansed data into the main processed/ Parquet store. lambda_stock_predictor loads the XGBoost model and returns predictions via API Gateway. "
+},
+{
+	"uri": "//localhost:1313/5-workshop/5.2-prerequiste/2.2-s3-buckets/",
 	"title": "Create S3 Buckets",
 	"tags": [],
 	"description": "",
-	"content": "Create S3 Buckets The project uses 4 S3 Buckets to store different types of data in the pipeline:\nBucket Purpose Raw Bucket Stores raw data scraped from Yahoo Finance (JSON/Parquet) under raw/ prefix Processed Bucket Stores Feature-Engineered data, cleansed data (cleansed_daily/), and reports (reports/) Model Bucket Stores trained XGBoost model files (models/xgboost_v1/) Simulation Bucket A separate sandbox environment for the Replay Simulator Note: Quarantine Bucket and Cleansed Bucket share the Processed Bucket by default but under different prefixes (quarantine/ and cleansed/). You can split them into separate buckets if desired.\nStep 1: Create Buckets with AWS CLI Run the following commands in your terminal:\n# Raw Bucket — stores raw Yahoo Finance data aws s3 mb s3://my-nasdaq-stock-market-raw-2026-ap-southeast-1 \\ --region ap-southeast-1 # Processed Bucket — stores processed Parquet, cleansed_daily, reports, quarantine aws s3 mb s3://my-nasdaq-stock-processed-2026-ap-southeast-1 \\ --region ap-southeast-1 # Model Bucket — stores trained XGBoost model aws s3 mb s3://my-nasdaq-stock-models-2026-ap-southeast-1 \\ --region ap-southeast-1 # Simulation Bucket — sandbox for Replay Simulator aws s3 mb s3://my-nasdaq-stock-simulation-2026-ap-southeast-1 \\ --region ap-southeast-1 [TODO: Add screenshot of S3 buckets successfully created — /images/2.2/s3-buckets-created.png]\nStep 2: Verify Buckets aws s3 ls | grep my-nasdaq Expected output:\n2026-07-29 10:00:00 my-nasdaq-stock-market-raw-2026-ap-southeast-1 2026-07-29 10:00:00 my-nasdaq-stock-models-2026-ap-southeast-1 2026-07-29 10:00:00 my-nasdaq-stock-processed-2026-ap-southeast-1 2026-07-29 10:00:00 my-nasdaq-stock-simulation-2026-ap-southeast-1 Step 3: Upload Tickers List to S3 The tickers.json file contains 3,000+ NASDAQ tickers. Upload it to S3:\npython upload_tickers_config.py --file tickers.json [TODO: Add screenshot of tickers.json uploaded in S3 — /images/2.2/s3-tickers-uploaded.png]\nRefresh the ticker list with the latest NASDAQ tickers using:\npython refresh_tickers_from_nasdaq.py "
+	"content": "Create S3 Buckets The project uses 4 S3 Buckets to store different types of data in the pipeline:\nBucket Purpose Raw Bucket Stores raw data scraped from Yahoo Finance (JSON/Parquet) under raw/ prefix Processed Bucket Stores Feature-Engineered data, cleansed data (cleansed_daily/), and reports (reports/) Model Bucket Stores trained XGBoost model files (models/xgboost_v1/) Simulation Bucket A separate sandbox environment for the Replay Simulator Note: Quarantine Bucket and Cleansed Bucket share the Processed Bucket by default but under different prefixes (quarantine/ and cleansed/). You can split them into separate buckets if desired.\nStep 1: Create Buckets with AWS CLI Run the following commands in your terminal:\n# Raw Bucket — stores raw Yahoo Finance data aws s3 mb s3://my-nasdaq-stock-market-raw-2026-ap-southeast-1 \\ --region ap-southeast-1 # Processed Bucket — stores processed Parquet, cleansed_daily, reports, quarantine aws s3 mb s3://my-nasdaq-stock-processed-2026-ap-southeast-1 \\ --region ap-southeast-1 # Model Bucket — stores trained XGBoost model aws s3 mb s3://my-nasdaq-stock-models-2026-ap-southeast-1 \\ --region ap-southeast-1 # Simulation Bucket — sandbox for Replay Simulator aws s3 mb s3://my-nasdaq-stock-simulation-2026-ap-southeast-1 \\ --region ap-southeast-1 [TODO: Add screenshot of S3 buckets successfully created — /images/2.2/s3-buckets-created.png]\nStep 2: Verify Buckets aws s3 ls | grep my-nasdaq Expected output:\n2026-07-29 10:00:00 my-nasdaq-stock-market-raw-2026-ap-southeast-1\r2026-07-29 10:00:00 my-nasdaq-stock-models-2026-ap-southeast-1\r2026-07-29 10:00:00 my-nasdaq-stock-processed-2026-ap-southeast-1\r2026-07-29 10:00:00 my-nasdaq-stock-simulation-2026-ap-southeast-1 Step 3: Upload Tickers List to S3 The tickers.json file contains 3,000+ NASDAQ tickers. Upload it to S3:\npython upload_tickers_config.py --file tickers.json [TODO: Add screenshot of tickers.json uploaded in S3 — /images/2.2/s3-tickers-uploaded.png]\nRefresh the ticker list with the latest NASDAQ tickers using:\npython refresh_tickers_from_nasdaq.py "
 },
 {
-	"uri": "//localhost:1313/3-data-pipeline/3.2-quality-gate/",
+	"uri": "//localhost:1313/5-workshop/5.3-data-pipeline/3.2-quality-gate/",
 	"title": "Lambda Quality Gate",
 	"tags": [],
 	"description": "",
-	"content": "Lambda Quality Gate — Data Validation \u0026amp; Isolation lambda_quality_gate.py receives raw data from S3 and strictly validates it before passing it to the next processing stage.\n[TODO: Add Quality Gate flow diagram — /images/3.2/quality-gate-flow.png]\nHow It Works S3 Raw Data │ ▼ lambda_quality_gate │ ├── ✅ Valid → S3 cleansed_daily/YYYY-MM-DD/ │ └── ❌ Invalid → S3 quarantine/YYYY-MM-DD/ Validation Rules src/validator.py applies the following checks:\nCheck Type Rule Schema Check Ensures all required columns exist: Date, Ticker, Open, High, Low, Close, Volume Negative Values Rejects records with Close \u0026lt; 0 or Volume \u0026lt; 0 OHLC Validity Validates High \u0026gt;= Low, High \u0026gt;= Open, High \u0026gt;= Close Null/NaN Check Filters tickers with null ratio exceeding the allowed threshold Step 1: Create Lambda Function Function name: nasdaq-quality-gate CMD override: src.lambda_quality_gate.lambda_handler Memory: 512 MB Timeout: 5 minutes [TODO: Add screenshot of Lambda Quality Gate configuration — /images/3.2/lambda-quality-gate-config.png]\n"
+	"content": "Lambda Quality Gate — Data Validation \u0026amp; Isolation lambda_quality_gate.py receives raw data from S3 and strictly validates it before passing it to the next processing stage.\n[TODO: Add Quality Gate flow diagram — /images/3.2/quality-gate-flow.png]\nHow It Works S3 Raw Data\r│\r▼\rlambda_quality_gate\r│\r├── ✅ Valid → S3 cleansed_daily/YYYY-MM-DD/\r│\r└── ❌ Invalid → S3 quarantine/YYYY-MM-DD/ Validation Rules src/validator.py applies the following checks:\nCheck Type Rule Schema Check Ensures all required columns exist: Date, Ticker, Open, High, Low, Close, Volume Negative Values Rejects records with Close \u0026lt; 0 or Volume \u0026lt; 0 OHLC Validity Validates High \u0026gt;= Low, High \u0026gt;= Open, High \u0026gt;= Close Null/NaN Check Filters tickers with null ratio exceeding the allowed threshold Step 1: Create Lambda Function Function name: nasdaq-quality-gate CMD override: src.lambda_quality_gate.lambda_handler Memory: 512 MB Timeout: 5 minutes [TODO: Add screenshot of Lambda Quality Gate configuration — /images/3.2/lambda-quality-gate-config.png]\n"
 },
 {
-	"uri": "//localhost:1313/2-preparation/",
-	"title": "Preparation",
+	"uri": "//localhost:1313/5-workshop/5.2-prerequiste/",
+	"title": "Prerequisites",
 	"tags": [],
 	"description": "",
 	"content": "Preparation Before starting to build the pipeline, you need to prepare the following AWS resources:\nAWS Account \u0026amp; IAM Permissions Create S3 Buckets Create SQS Queue Create IAM Roles for Lambda "
 },
 {
-	"uri": "//localhost:1313/4-ml-model/4.2-train-deploy/",
+	"uri": "//localhost:1313/2-proposal/",
+	"title": "Proposal",
+	"tags": [],
+	"description": "",
+	"content": "Project Proposal [Project proposal — describes the objectives, scope, technical approach, and expected outcomes of the project.]\nProject Summary Field Details Project Title AWS Serverless ETL Pipeline \u0026amp; Stock Price Prediction Author Supervisor Start Date End Date Objectives [To be filled in.]\nTechnical Approach [To be filled in.]\nExpected Outcomes [To be filled in.]\n"
+},
+{
+	"uri": "//localhost:1313/5-workshop/5.4-ml-model/4.2-train-deploy/",
 	"title": "Train &amp; Deploy Model",
 	"tags": [],
 	"description": "",
 	"content": "Train \u0026amp; Deploy XGBoost Model Step 1: Train Model Locally python train_model.py The script:\nLoads all processed/YYYY.parquet files from S3. Drops rows with null values (insufficient history for rolling windows). Splits data chronologically — 70% Train / 30% Test (no shuffle to prevent data leakage). Trains XGBoostClassifier. Evaluates and exports training_report.md. Saves xgboost_model.json to the S3 Model Bucket. Training Results Metric Value Accuracy 53.12% Precision 0.5311 Recall 0.4828 F1 Score 0.5058 AUC-ROC 0.5487 [TODO: Add Confusion Matrix chart — /images/4.2/confusion-matrix.png]\n[TODO: Add Feature Importance chart — /images/4.2/feature-importance.png]\nStep 2: Deploy Lambda Predictor Function name: nasdaq-stock-predictor CMD override: src.lambda_stock_predictor.lambda_handler Memory: 2048 MB Timeout: 30 seconds The predictor returns:\n{ \u0026#34;ticker\u0026#34;: \u0026#34;AAPL\u0026#34;, \u0026#34;prediction\u0026#34;: 1, \u0026#34;probability\u0026#34;: 0.623, \u0026#34;label\u0026#34;: \u0026#34;UP\u0026#34;, \u0026#34;date\u0026#34;: \u0026#34;2026-07-29\u0026#34; } [TODO: Add API Gateway endpoint configuration screenshot — /images/4.2/api-gateway-endpoint.png]\n"
 },
 {
-	"uri": "//localhost:1313/2-preparation/2.3-sqs-queue/",
+	"uri": "//localhost:1313/3-blogsposted/",
+	"title": "Blogs Posted",
+	"tags": [],
+	"description": "",
+	"content": "Blogs Posted [List of technical blog posts written during the project period — includes links, publish dates, and summaries.]\n# Title Platform Published Date Link "
+},
+{
+	"uri": "//localhost:1313/5-workshop/5.2-prerequiste/2.3-sqs-queue/",
 	"title": "Create SQS Queue",
 	"tags": [],
 	"description": "",
 	"content": "Create Amazon SQS Queue Amazon SQS is the backbone of the Fan-Out architecture in Pipeline B. The Lambda Producer pushes chunks of ticker lists into the Queue, and multiple Lambda Consumers run in parallel to process them.\n[TODO: Add Fan-Out architecture diagram — /images/2.3/sqs-fanout-architecture.png]\nStep 1: Create SQS Queue aws sqs create-queue \\ --queue-name daily-collector-queue \\ --region ap-southeast-1 \\ --attributes \u0026#39;{ \u0026#34;VisibilityTimeout\u0026#34;: \u0026#34;300\u0026#34;, \u0026#34;MessageRetentionPeriod\u0026#34;: \u0026#34;86400\u0026#34;, \u0026#34;ReceiveMessageWaitTimeSeconds\u0026#34;: \u0026#34;20\u0026#34; }\u0026#39; Attribute explanation:\nAttribute Value Explanation VisibilityTimeout 300 seconds Time Lambda Consumer holds the message before returning it to queue on failure MessageRetentionPeriod 86400 seconds (1 day) How long messages are retained in the queue ReceiveMessageWaitTimeSeconds 20 seconds Long-polling — reduces unnecessary API calls Step 2: Get Queue URL aws sqs get-queue-url \\ --queue-name daily-collector-queue \\ --region ap-southeast-1 Expected result:\n{ \u0026#34;QueueUrl\u0026#34;: \u0026#34;https://sqs.ap-southeast-1.amazonaws.com/123456789012/daily-collector-queue\u0026#34; } Save this Queue URL — you will need it when configuring Lambda environment variables.\n[TODO: Add screenshot of SQS Queue created in AWS Console — /images/2.3/sqs-queue-created.png]\n"
 },
 {
-	"uri": "//localhost:1313/3-data-pipeline/",
+	"uri": "//localhost:1313/5-workshop/5.3-data-pipeline/",
 	"title": "Data Pipeline",
 	"tags": [],
 	"description": "",
 	"content": "Data Pipeline In this section, you will build and deploy the three Lambda Functions that form the core data pipeline:\nLambda Daily Collector — Fan-Out Producer Lambda Quality Gate — Data Validation Lambda Daily ETL — Parquet Aggregation "
 },
 {
-	"uri": "//localhost:1313/3-data-pipeline/3.3-daily-etl/",
+	"uri": "//localhost:1313/5-workshop/5.3-data-pipeline/3.3-daily-etl/",
 	"title": "Lambda Daily ETL",
 	"tags": [],
 	"description": "",
-	"content": "Lambda Daily ETL — Parquet Aggregation lambda_daily_etl.py is the final step of Pipeline B. It reads all data from the cleansed_daily/YYYY-MM-DD/ buffer, applies Feature Engineering, and merges it into the main yearly Parquet file (processed/YYYY.parquet).\nProcessing Flow S3 cleansed_daily/YYYY-MM-DD/ │ ▼ lambda_daily_etl │ 1. Read cleansed data from buffer 2. Load current year: processed/YYYY.parquet 3. Merge \u0026amp; Deduplicate (prefer latest data) 4. Recalculate Feature Engineering (Polars) 5. Write back: processed/YYYY.parquet 6. Delete cleansed_daily/ buffer │ ▼ S3 processed/YYYY.parquet (updated) Parquet Structure After Feature Engineering Each processed/YYYY.parquet file contains:\nGroup Columns Raw OHLCV Date, Symbol, Open, High, Low, Close, Adj_Close, Volume Trend SMA_5, SMA_20, EMA_12, EMA_26 Momentum MACD, MACD_Signal, MACD_Hist, RSI_14 Volatility BB_Upper, BB_Lower, BB_Width, Intraday_Volatility Lag \u0026amp; Return Lag_Close_1, Lag_Close_2, Lag_Close_3, Daily_Return Label Label (1=Up, 0=Down) "
+	"content": "Lambda Daily ETL — Parquet Aggregation lambda_daily_etl.py is the final step of Pipeline B. It reads all data from the cleansed_daily/YYYY-MM-DD/ buffer, applies Feature Engineering, and merges it into the main yearly Parquet file (processed/YYYY.parquet).\nProcessing Flow S3 cleansed_daily/YYYY-MM-DD/\r│\r▼\rlambda_daily_etl\r│\r1. Read cleansed data from buffer\r2. Load current year: processed/YYYY.parquet\r3. Merge \u0026amp; Deduplicate (prefer latest data)\r4. Recalculate Feature Engineering (Polars)\r5. Write back: processed/YYYY.parquet\r6. Delete cleansed_daily/ buffer\r│\r▼\rS3 processed/YYYY.parquet (updated) Parquet Structure After Feature Engineering Each processed/YYYY.parquet file contains:\nGroup Columns Raw OHLCV Date, Symbol, Open, High, Low, Close, Adj_Close, Volume Trend SMA_5, SMA_20, EMA_12, EMA_26 Momentum MACD, MACD_Signal, MACD_Hist, RSI_14 Volatility BB_Upper, BB_Lower, BB_Width, Intraday_Volatility Lag \u0026amp; Return Lag_Close_1, Lag_Close_2, Lag_Close_3, Daily_Return Label Label (1=Up, 0=Down) "
 },
 {
-	"uri": "//localhost:1313/2-preparation/2.4-iam-roles/",
+	"uri": "//localhost:1313/5-workshop/5.2-prerequiste/2.4-iam-roles/",
 	"title": "Create IAM Roles",
 	"tags": [],
 	"description": "",
 	"content": "Create IAM Roles for Lambda Functions Each Lambda Function needs an IAM Execution Role to access other AWS services (S3, SQS, CloudWatch Logs).\nStep 1: Create Trust Policy Document Create lambda-trust-policy.json:\n{ \u0026#34;Version\u0026#34;: \u0026#34;2012-10-17\u0026#34;, \u0026#34;Statement\u0026#34;: [ { \u0026#34;Effect\u0026#34;: \u0026#34;Allow\u0026#34;, \u0026#34;Principal\u0026#34;: { \u0026#34;Service\u0026#34;: \u0026#34;lambda.amazonaws.com\u0026#34; }, \u0026#34;Action\u0026#34;: \u0026#34;sts:AssumeRole\u0026#34; } ] } Step 2: Create IAM Role aws iam create-role \\ --role-name nasdaq-etl-lambda-role \\ --assume-role-policy-document file://lambda-trust-policy.json Step 3: Attach Required Policies # CloudWatch Logs (required for all Lambda) aws iam attach-role-policy \\ --role-name nasdaq-etl-lambda-role \\ --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole # S3 Full Access aws iam attach-role-policy \\ --role-name nasdaq-etl-lambda-role \\ --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess # SQS Full Access aws iam attach-role-policy \\ --role-name nasdaq-etl-lambda-role \\ --policy-arn arn:aws:iam::aws:policy/AmazonSQSFullAccess In production, apply the Least Privilege principle — grant only the exact permissions each Lambda needs, instead of using FullAccess.\nStep 4: Build \u0026amp; Push Docker Image to ECR All Lambda Functions use Docker Container Images to package complex Python libraries (Polars, XGBoost, yfinance).\n# 1. Login to ECR aws ecr get-login-password --region ap-southeast-1 | \\ docker login --username AWS --password-stdin \\ \u0026lt;YOUR_ACCOUNT_ID\u0026gt;.dkr.ecr.ap-southeast-1.amazonaws.com # 2. Create ECR Repository aws ecr create-repository \\ --repository-name nasdaq-etl-lambda \\ --region ap-southeast-1 # 3. Build Docker Image docker build -t nasdaq-etl-lambda:latest . # 4. Tag Image docker tag nasdaq-etl-lambda:latest \\ \u0026lt;YOUR_ACCOUNT_ID\u0026gt;.dkr.ecr.ap-southeast-1.amazonaws.com/nasdaq-etl-lambda:latest # 5. Push to ECR docker push \\ \u0026lt;YOUR_ACCOUNT_ID\u0026gt;.dkr.ecr.ap-southeast-1.amazonaws.com/nasdaq-etl-lambda:latest [TODO: Add screenshot of ECR Repository with pushed image — /images/2.4/ecr-image-pushed.png]\n"
 },
 {
-	"uri": "//localhost:1313/4-ml-model/",
+	"uri": "//localhost:1313/4-eventparticipated/",
+	"title": "Events Participated",
+	"tags": [],
+	"description": "",
+	"content": "Events Participated [List of workshops, seminars, meetups, or online events attended during the project period.]\n# Event Name Organizer Date Format Notes "
+},
+{
+	"uri": "//localhost:1313/5-workshop/5.4-ml-model/",
 	"title": "Machine Learning",
 	"tags": [],
 	"description": "",
 	"content": "Machine Learning In this section, you will perform Feature Engineering and train an XGBoost model to predict stock price trends:\nFeature Engineering — 16 Technical Indicators Train \u0026amp; Deploy the Model "
 },
 {
-	"uri": "//localhost:1313/5-api-dashboard/",
+	"uri": "//localhost:1313/5-workshop/5.5-api-dashboard/",
 	"title": "API &amp; Dashboard",
 	"tags": [],
 	"description": "",
 	"content": "API \u0026amp; Dashboard After completing the pipeline and deploying the Lambda Predictor, you can access predictions via two channels:\n5.1 — AWS API Gateway REST API Lambda nasdaq-stock-predictor is exposed via AWS API Gateway as a REST endpoint:\nEndpoint: POST https://\u0026lt;api-id\u0026gt;.execute-api.ap-southeast-1.amazonaws.com/prod/predict\nRequest:\n{\u0026#34;ticker\u0026#34;: \u0026#34;AAPL\u0026#34;} Response:\n{ \u0026#34;ticker\u0026#34;: \u0026#34;AAPL\u0026#34;, \u0026#34;prediction\u0026#34;: 1, \u0026#34;probability\u0026#34;: 0.623, \u0026#34;label\u0026#34;: \u0026#34;UP\u0026#34;, \u0026#34;date\u0026#34;: \u0026#34;2026-07-29\u0026#34; } [TODO: Add screenshot of API Gateway test — /images/5/api-gateway-test.png]\n5.2 — Streamlit Dashboard (Local) streamlit run dashboard/streamlit_app.py Open browser at http://localhost:8501.\n[TODO: Add Dashboard Top Buy Signals screenshot — /images/5/dashboard-top-buy.png]\n[TODO: Add Dashboard ticker detail screenshot — /images/5/dashboard-ticker-detail.png]\n5.3 — Lambda Functions Summary Lambda Function Handler Memory Timeout Trigger nasdaq-daily-collector src.lambda_daily_collector.lambda_handler 512 MB 5 min EventBridge daily nasdaq-collector-producer src.lambda_collector_producer.lambda_handler 1024 MB 15 min SQS trigger nasdaq-quality-gate src.lambda_quality_gate.lambda_handler 512 MB 5 min S3 Event nasdaq-daily-etl src.lambda_daily_etl.lambda_handler 3008 MB 15 min S3 Event nasdaq-stock-predictor src.lambda_stock_predictor.lambda_handler 2048 MB 30 sec API Gateway "
 },
 {
-	"uri": "//localhost:1313/6-cleanup/",
-	"title": "Clean up resources",
+	"uri": "//localhost:1313/5-workshop/",
+	"title": "Workshop",
+	"tags": [],
+	"description": "",
+	"content": "Workshop This section contains the full technical documentation for building the AWS Serverless ETL Pipeline \u0026amp; Stock Price Prediction system.\nWorkshop Overview Prerequisites Data Pipeline Machine Learning API \u0026amp; Dashboard Clean up Resources "
+},
+{
+	"uri": "//localhost:1313/5-workshop/5.6-cleanup/",
+	"title": "Clean up Resources",
 	"tags": [],
 	"description": "",
 	"content": "Clean up Resources After completing the workshop, delete all AWS resources to avoid unexpected charges.\nWarning: The steps below will permanently delete all data and resources created during this workshop. Make sure to back up anything you need before proceeding.\nStep 1: Delete Lambda Functions aws lambda delete-function --function-name nasdaq-daily-collector --region ap-southeast-1 aws lambda delete-function --function-name nasdaq-collector-producer --region ap-southeast-1 aws lambda delete-function --function-name nasdaq-quality-gate --region ap-southeast-1 aws lambda delete-function --function-name nasdaq-daily-etl --region ap-southeast-1 aws lambda delete-function --function-name nasdaq-stock-predictor --region ap-southeast-1 Step 2: Delete EventBridge Rule aws events remove-targets --rule nasdaq-daily-pipeline-trigger --ids lambda-target --region ap-southeast-1 aws events delete-rule --name nasdaq-daily-pipeline-trigger --region ap-southeast-1 Step 3: Delete SQS Queue aws sqs delete-queue \\ --queue-url \u0026#34;https://sqs.ap-southeast-1.amazonaws.com/\u0026lt;ACCOUNT_ID\u0026gt;/daily-collector-queue\u0026#34; \\ --region ap-southeast-1 Step 4: Empty \u0026amp; Delete S3 Buckets aws s3 rm s3://my-nasdaq-stock-market-raw-2026-ap-southeast-1 --recursive aws s3 rm s3://my-nasdaq-stock-processed-2026-ap-southeast-1 --recursive aws s3 rm s3://my-nasdaq-stock-models-2026-ap-southeast-1 --recursive aws s3 rm s3://my-nasdaq-stock-simulation-2026-ap-southeast-1 --recursive aws s3 rb s3://my-nasdaq-stock-market-raw-2026-ap-southeast-1 aws s3 rb s3://my-nasdaq-stock-processed-2026-ap-southeast-1 aws s3 rb s3://my-nasdaq-stock-models-2026-ap-southeast-1 aws s3 rb s3://my-nasdaq-stock-simulation-2026-ap-southeast-1 Step 5: Delete ECR Repository aws ecr delete-repository --repository-name nasdaq-etl-lambda --force --region ap-southeast-1 Step 6: Delete IAM Role aws iam detach-role-policy --role-name nasdaq-etl-lambda-role --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole aws iam detach-role-policy --role-name nasdaq-etl-lambda-role --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess aws iam detach-role-policy --role-name nasdaq-etl-lambda-role --policy-arn arn:aws:iam::aws:policy/AmazonSQSFullAccess aws iam delete-role --role-name nasdaq-etl-lambda-role Verification Checklist ✅ Lambda Console — No more nasdaq- functions ✅ S3 Console — No more my-nasdaq- buckets ✅ SQS Console — daily-collector-queue deleted ✅ ECR Console — nasdaq-etl-lambda repository deleted ✅ EventBridge Console — nasdaq-daily-pipeline-trigger rule deleted Check AWS Cost Explorer after 24 hours to confirm no remaining charges from this workshop.\n"
+},
+{
+	"uri": "//localhost:1313/6-self-evaluation/",
+	"title": "Self Evaluation",
+	"tags": [],
+	"description": "",
+	"content": "Self Evaluation [Personal evaluation of learning outcomes, skills gained, challenges faced, and areas for improvement throughout the project.]\nTechnical Skills Gained Skill Before After Notes AWS Lambda Amazon S3 Amazon SQS Amazon EventBridge Amazon API Gateway Amazon ECR / Docker Feature Engineering XGBoost / ML Apache Parquet / Polars Overall Assessment What went well:\n[To be filled in.]\nWhat could be improved:\n[To be filled in.]\nKey Lessons Learned:\n[To be filled in.]\n"
+},
+{
+	"uri": "//localhost:1313/7-feedback/",
+	"title": "Feedback",
+	"tags": [],
+	"description": "",
+	"content": "Feedback [Feedback received from mentors, reviewers, or peers regarding the project and lab report.]\nMentor / Reviewer Feedback Date Reviewer Feedback Action Taken Peer Feedback [To be filled in.]\nResponse to Feedback [To be filled in.]\n"
 },
 {
 	"uri": "//localhost:1313/categories/",

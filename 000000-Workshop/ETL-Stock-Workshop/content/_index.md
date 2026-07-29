@@ -1,25 +1,22 @@
 ---
-title : "AWS ETL Stock Price Prediction"
+title : "AWS ETL Stock Price Prediction — Lab Report"
 date: ""
 weight : 1
 chapter : false
 ---
 
-# AWS Serverless ETL Pipeline & Stock Price Prediction
+# AWS ETL Lambda Stock Price Prediction — Lab Report
 
 ### Overview
 
-In this workshop, you will build a **fully automated serverless Big Data Pipeline** on AWS to collect, process, and classify NASDAQ stock price movements using Machine Learning (XGBoost).
-
-> **📌 NOTE:** This image placeholder requires an architecture diagram.
-> 
-> *[TODO: Add system architecture diagram image here — e.g., `/images/0-home/architecture-overview.png`]*
+This is the lab report for the project **AWS Serverless ETL Pipeline & Machine Learning — Stock Price Prediction on NASDAQ**, built on AWS Lambda, S3, SQS, and XGBoost.
 
 ### Content
 
- 1. [Introduction](1-introduce/)
- 2. [Preparation](2-preparation/)
- 3. [Data Pipeline](3-data-pipeline/)
- 4. [Machine Learning](4-ml-model/)
- 5. [API & Dashboard](5-api-dashboard/)
- 6. [Clean up resources](6-cleanup/)
+ 1. [Work Log](1-Worklog/)
+ 2. [Proposal](2-Proposal/)
+ 3. [Blogs Posted](3-BlogsPosted/)
+ 4. [Events Participated](4-EventParticipated/)
+ 5. [Workshop](5-Workshop/)
+ 6. [Self Evaluation](6-Self-evaluation/)
+ 7. [Feedback](7-Feedback/)
