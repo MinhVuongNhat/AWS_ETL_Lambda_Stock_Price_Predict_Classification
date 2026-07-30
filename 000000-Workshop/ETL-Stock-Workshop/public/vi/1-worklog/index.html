@@ -12,21 +12,21 @@
     <title>Nhật ký công việc :: AWS ETL Dự đoán Giá Cổ Phiếu</title>
 
     
-    <link href="/css/nucleus.css?1785322479" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785322479" rel="stylesheet">
-    <link href="/css/hybrid.css?1785322479" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785322479" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785322479" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785322479" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785322479" rel="stylesheet">
-    <link href="/css/theme.css?1785322479" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785322479" rel="stylesheet">
+    <link href="/css/nucleus.css?1785382037" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785382037" rel="stylesheet">
+    <link href="/css/hybrid.css?1785382037" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785382037" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785382037" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785382037" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785382037" rel="stylesheet">
+    <link href="/css/theme.css?1785382037" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785382037" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785322479" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785382037" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785322479"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785382037"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785322479"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785322479"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785382037"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785382037"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785322479"></script>
+<script type="text/javascript" src="/js/search.js?1785382037"></script>
 
     
   </div>
@@ -905,26 +905,78 @@
 
 
 	<h4 id="nhật-ký-công-việc">Nhật ký công việc</h4>
-<p><em>[Ghi lại tiến độ hàng tuần, các công việc đã hoàn thành, vướng mắc gặp phải và hướng giải quyết trong quá trình thực hiện dự án.]</em></p>
+<p><em>Nhật ký công việc 8 tuần — ghi lại tiến độ chi tiết, công việc đã hoàn thành, các vấn đề/thách thức kỹ thuật gặp phải và giải pháp xử lý trong quá trình xây dựng dự án Big Data ETL Pipeline &amp; Machine Learning trên AWS.</em></p>
 <hr>
 <table>
 	<thead>
 			<tr>
 					<th style="text-align: left">Tuần</th>
-					<th style="text-align: left">Ngày</th>
-					<th style="text-align: left">Công việc đã thực hiện</th>
-					<th style="text-align: left">Kết quả / Trạng thái</th>
+					<th style="text-align: left">Công việc thực hiện (Task &amp; Deliverables)</th>
+					<th style="text-align: center">Trạng thái</th>
+					<th style="text-align: left">Vấn đề / Vướng mắc gặp phải (Issues &amp; Challenges)</th>
+					<th style="text-align: left">Giải pháp / Bài học kinh nghiệm (Solution &amp; Takeaway)</th>
 			</tr>
 	</thead>
 	<tbody>
 			<tr>
-					<td style="text-align: left"></td>
-					<td style="text-align: left"></td>
-					<td style="text-align: left"></td>
-					<td style="text-align: left"></td>
+					<td style="text-align: left"><strong>Tuần 1</strong></td>
+					<td style="text-align: left"><strong>Khởi tạo dự án &amp; Xây dựng pipeline Ingestion ban đầu</strong><!-- raw HTML omitted -->• Thiết lập thư viện Python (Polars, YFinance, Boto3).<!-- raw HTML omitted -->• Viết script thu thập dữ liệu cổ phiếu NASDAQ từ Yahoo Finance API (<code>yfinance</code>).<!-- raw HTML omitted -->• Lưu trữ dữ liệu thô (Raw Data) dưới dạng CSV/Parquet ban đầu.</td>
+					<td style="text-align: center"><code>Completed</code></td>
+					<td style="text-align: left">• Tốc độ thu thập hơn 3,000 mã cổ phiếu bằng <code>pandas</code> rất chậm.<!-- raw HTML omitted -->• API Yahoo Finance bị rate limit / timeout khi gọi liên tục.</td>
+					<td style="text-align: left">• Chuyển sang sử dụng <strong>Polars</strong> thay cho Pandas giúp tăng tốc độ xử lý 10-50x.<!-- raw HTML omitted -->• Áp dụng chia nhỏ danh sách (batch/chunking) và xử lý bất đồng bộ.</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>Tuần 2</strong></td>
+					<td style="text-align: left"><strong>Thiết kế Kiến trúc AWS Cloud &amp; S3 Bucket Layering</strong><!-- raw HTML omitted -->• Cấu hình tài khoản AWS IAM, S3 Buckets.<!-- raw HTML omitted -->• Phân chia kiến trúc lưu trữ 4 tầng: <code>raw/</code>, <code>cleansed_daily/</code>, <code>processed/</code>, <code>quarantine/</code>.<!-- raw HTML omitted -->• Viết module <code>s3_service.py</code> tương tác với S3.</td>
+					<td style="text-align: center"><code>Completed</code></td>
+					<td style="text-align: left">• Gặp khó khăn khi quản lý cấu trúc file Parquet lưu trữ dữ liệu lịch sử từ 1962 đến nay.<!-- raw HTML omitted -->• Quản lý dung lượng &amp; chi phí đọc/ghi trên S3.</td>
+					<td style="text-align: left">• Thiết kế lưu trữ dữ liệu lịch sử theo từng năm (<code>processed/YYYY.parquet</code>) giúp tối ưu truy vấn.<!-- raw HTML omitted -->• Sử dụng định dạng <strong>Parquet</strong> nén Snappy tối ưu kích thước lưu trữ.</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>Tuần 3</strong></td>
+					<td style="text-align: left"><strong>Xây dựng Data Quality Gate &amp; Quarantine Mechanism</strong><!-- raw HTML omitted -->• Viết module <code>validator.py</code> kiểm tra Schema &amp; Data Quality.<!-- raw HTML omitted -->• Xây dựng <code>quarantine.py</code> cách ly dữ liệu lỗi.<!-- raw HTML omitted -->• Đóng gói và deploy <code>lambda_quality_gate.py</code>.</td>
+					<td style="text-align: center"><code>Completed</code></td>
+					<td style="text-align: left">• Dữ liệu từ Yahoo Finance hay có lỗi: thiếu giá (null/NaN), giá âm, ngày trùng lặp, mất phiên giao dịch.<!-- raw HTML omitted -->• Dữ liệu lỗi tràn vào file chính làm hỏng tính toán indicator.</td>
+					<td style="text-align: left">• Định nghĩa các quy tắc kiểm tra nghiêm ngặt (Quality Gate).<!-- raw HTML omitted -->• Tự động đẩy file lỗi vào S3 <code>quarantine/</code> kèm log lý do để debug mà không làm gián đoạn pipeline.</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>Tuần 4</strong></td>
+					<td style="text-align: left"><strong>Phát triển Feature Engineering Engine với Polars</strong><!-- raw HTML omitted -->• Thiết kế module <code>transform.py</code> tính toán 16 chỉ báo kỹ thuật.<!-- raw HTML omitted -->• Các chỉ báo: SMA (10, 20, 50), EMA, RSI, MACD, Bollinger Bands, Volatility, Price Lags.<!-- raw HTML omitted -->• Định nghĩa nhãn dự đoán Target (<code>Target_Return_1D_Class</code>).</td>
+					<td style="text-align: center"><code>Completed</code></td>
+					<td style="text-align: left">• Tính toán chỉ báo kỹ thuật trên chuỗi thời gian (Time-series Window Functions) phức tạp khi dữ liệu bị khuyết ngày.<!-- raw HTML omitted -->• Tránh hiện tượng Look-ahead Bias (rò rỉ dữ liệu tương lai).</td>
+					<td style="text-align: left">• Dùng Window functions của Polars theo <code>Ticker</code> và sắp xếp đúng thứ tự <code>Date</code>.<!-- raw HTML omitted -->• Kiểm tra kỹ lưỡng các hàm Shift/Lag để đảm bảo tính toán feature chỉ dựa trên dữ liệu quá khứ.</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>Tuần 5</strong></td>
+					<td style="text-align: left"><strong>Xây dựng kiến trúc Serverless Fan-Out (AWS SQS &amp; EventBridge)</strong><!-- raw HTML omitted -->• Viết <code>lambda_daily_collector.py</code> (Producer) đọc <code>tickers.json</code> và chia message vào SQS Queue.<!-- raw HTML omitted -->• Viết <code>lambda_collector_producer.py</code> (Consumer) nhận message từ SQS và tải data.<!-- raw HTML omitted -->• Cấu hình AWS EventBridge Cron công việc tự động chạy hàng ngày.</td>
+					<td style="text-align: center"><code>Completed</code></td>
+					<td style="text-align: left">• AWS Lambda bị <strong>Timeout 15 phút</strong> khi tải dữ liệu cho toàn bộ 3,000+ cổ phiếu NASDAQ cùng lúc.<!-- raw HTML omitted -->• Một số Lambda Consumer thất bại làm mất dữ liệu chunk đó.</td>
+					<td style="text-align: left">• Áp dụng <strong>Fan-Out Pattern</strong>: Producer Lambda chia mã cổ phiếu thành các chunk nhỏ (ví dụ 50 mã) đẩy vào <strong>AWS SQS Queue</strong>.<!-- raw HTML omitted -->• Nhiều Lambda Consumer chạy song song xử lý từng message.<!-- raw HTML omitted -->• Cấu hình DLQ (Dead Letter Queue) để hứng các message lỗi.</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>Tuần 6</strong></td>
+					<td style="text-align: left"><strong>Huấn luyện Mô hình Machine Learning (XGBoost Classifier)</strong><!-- raw HTML omitted -->• Viết script <code>train_model.py</code> để train mô hình phân loại xu hướng giá (Tăng/Giảm).<!-- raw HTML omitted -->• Chia tập dữ liệu Train/Validation/Test theo mốc thời gian (TimeSeriesSplit).<!-- raw HTML omitted -->• Đánh giá mô hình (Accuracy, Precision, Recall, AUC, Feature Importance) và xuất <code>training_report.md</code>.</td>
+					<td style="text-align: center"><code>Completed</code></td>
+					<td style="text-align: left">• Mất cân bằng dữ liệu (Imbalanced Data) giữa ngày tăng và giảm.<!-- raw HTML omitted -->• Mô hình bị Overfitting trên tập dữ liệu lịch sử nếu không chia đúng Time-series split.</td>
+					<td style="text-align: left">• Sử dụng <strong>TimeSeriesSplit</strong> thay vì K-Fold ngẫu nhiên để phản ánh đúng thực tế giao dịch.<!-- raw HTML omitted -->• Sử dụng XGBoost với <code>scale_pos_weight</code> và tinh chỉnh Hyperparameters.<!-- raw HTML omitted -->• Lưu artifact mô hình (<code>xgboost_v1.json</code>) lên S3 Bucket.</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>Tuần 7</strong></td>
+					<td style="text-align: left"><strong>Xây dựng Predictor Service (AWS Lambda &amp; API Gateway)</strong><!-- raw HTML omitted -->• Viết <code>lambda_stock_predictor.py</code> nạp mô hình từ S3 và đưa ra dự đoán Real-time.<!-- raw HTML omitted -->• Kết nối Lambda với AWS API Gateway tạo RESTful API.<!-- raw HTML omitted -->• Tự động chọn ra <strong>Top 5 cổ phiếu khuyên mua</strong> (Xác suất tăng giá cao nhất).</td>
+					<td style="text-align: center"><code>Completed</code></td>
+					<td style="text-align: left">• Kích thước deployment package Lambda quá lớn khi include XGBoost &amp; Scikit-learn.<!-- raw HTML omitted -->• Cold start delay của Lambda làm phản hồi API bị chậm.</td>
+					<td style="text-align: left">• Đóng gói Lambda bằng <strong>Docker Container Image</strong> lưu trên Amazon ECR.<!-- raw HTML omitted -->• Tối ưu dung lượng Docker image chỉ cài đặt các thư viện cần thiết.</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>Tuần 8</strong></td>
+					<td style="text-align: left"><strong>Hoàn thiện Web Dashboard, Simulation Replay Engine &amp; Tài liệu Workshop</strong><!-- raw HTML omitted -->• Xây dựng Dashboard tương tác bằng Streamlit (<code>streamlit_app.py</code>).<!-- raw HTML omitted -->• Phát triển Replay Engine (<code>run_replay_local.py</code>, <code>lambda_replay_*</code>) để giả lập phát lại dữ liệu thị trường.<!-- raw HTML omitted -->• Viết tài liệu Workshop, README, kiểm thử toàn bộ hệ thống (End-to-End Test).</td>
+					<td style="text-align: center"><code>Completed</code></td>
+					<td style="text-align: left">• Đồng bộ dữ liệu hiển thị real-time giữa API Gateway và Streamlit Dashboard.<!-- raw HTML omitted -->• Giả lập biến động thị trường theo thời gian thực để test pipeline.</td>
+					<td style="text-align: left">• Thiết kế <code>Replay Engine</code> lưu State vào S3 để mô phỏng phát lại dữ liệu từng ngày.<!-- raw HTML omitted -->• Đóng gói tài liệu Workshop từng step-by-step cho người đọc dễ theo dõi và thực hành.</td>
 			</tr>
 	</tbody>
 </table>
+<hr>
 
 
 
@@ -1346,19 +1398,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785322479"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785322479"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785322479"></script>
-    <script src="/js/jquery.sticky.js?1785322479"></script>
-    <script src="/js/featherlight.min.js?1785322479"></script>
-    <script src="/js/highlight.pack.js?1785322479"></script>
+    <script src="/js/clipboard.min.js?1785382037"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785382037"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785382037"></script>
+    <script src="/js/jquery.sticky.js?1785382037"></script>
+    <script src="/js/featherlight.min.js?1785382037"></script>
+    <script src="/js/highlight.pack.js?1785382037"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785322479"></script>
-    <script src="/js/learn.js?1785322479"></script>
-    <script src="/js/hugo-learn.js?1785322479"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785382037"></script>
+    <script src="/js/learn.js?1785382037"></script>
+    <script src="/js/hugo-learn.js?1785382037"></script>
 
-    <link href="/mermaid/mermaid.css?1785322479" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785322479"></script>
+    <link href="/mermaid/mermaid.css?1785382037" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785382037"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

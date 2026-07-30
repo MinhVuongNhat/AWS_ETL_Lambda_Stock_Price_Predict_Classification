@@ -15,7 +15,8 @@ home = [ "HTML", "RSS", "JSON"]
   showVisitedLinks = true
   disableBreadcrumb = false
   disableNextPrev = false
-  
+  math = true
+
 [Languages]
 [Languages.en]
 title = "AWS ETL Stock Price Prediction"
@@ -38,3 +39,9 @@ name = "<i class='fab fa-github'></i> GitHub Repo"
 identifier = "GitHub"
 url = "https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification"
 weight = 10
+
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['\[', '\]'], ['$$', '$$']]
+    inline = [['\(', '\)']]          # khuyến nghị dùng \( ... \) thay vì $ ... $

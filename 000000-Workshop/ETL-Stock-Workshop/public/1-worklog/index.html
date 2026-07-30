@@ -12,21 +12,21 @@
     <title>Work Log :: AWS ETL Stock Price Prediction</title>
 
     
-    <link href="/css/nucleus.css?1785322479" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785322479" rel="stylesheet">
-    <link href="/css/hybrid.css?1785322479" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785322479" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785322479" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785322479" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785322479" rel="stylesheet">
-    <link href="/css/theme.css?1785322479" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785322479" rel="stylesheet">
+    <link href="/css/nucleus.css?1785382037" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785382037" rel="stylesheet">
+    <link href="/css/hybrid.css?1785382037" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785382037" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785382037" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785382037" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785382037" rel="stylesheet">
+    <link href="/css/theme.css?1785382037" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785382037" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785322479" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785382037" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785322479"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785382037"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785322479"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785322479"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785382037"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785382037"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785322479"></script>
+<script type="text/javascript" src="/js/search.js?1785382037"></script>
 
     
   </div>
@@ -905,26 +905,78 @@
 
 
 	<h4 id="work-log">Work Log</h4>
-<p><em>[Nhật ký công việc hàng tuần — ghi lại tiến độ, công việc đã hoàn thành và các vướng mắc gặp phải trong quá trình thực hiện dự án.]</em></p>
+<p><em>8-Week Project Log — Tracking detailed progress, deliverables completed, technical challenges encountered, and implemented solutions during the development of the AWS Big Data ETL Pipeline &amp; Machine Learning Project.</em></p>
 <hr>
 <table>
 	<thead>
 			<tr>
-					<th style="text-align: left">Tuần</th>
-					<th style="text-align: left">Ngày</th>
-					<th style="text-align: left">Công việc</th>
-					<th style="text-align: left">Trạng thái</th>
+					<th style="text-align: left">Week</th>
+					<th style="text-align: left">Tasks &amp; Deliverables</th>
+					<th style="text-align: center">Status</th>
+					<th style="text-align: left">Issues &amp; Challenges</th>
+					<th style="text-align: left">Solutions &amp; Key Takeaways</th>
 			</tr>
 	</thead>
 	<tbody>
 			<tr>
-					<td style="text-align: left"></td>
-					<td style="text-align: left"></td>
-					<td style="text-align: left"></td>
-					<td style="text-align: left"></td>
+					<td style="text-align: left"><strong>Week 1</strong></td>
+					<td style="text-align: left"><strong>Project Initialization &amp; Ingestion Pipeline Setup</strong><!-- raw HTML omitted -->• Setup Python environment (<code>Polars</code>, <code>YFinance</code>, <code>Boto3</code>).<!-- raw HTML omitted -->• Develop ingestion script fetching NASDAQ stock data via Yahoo Finance API (<code>yfinance</code>).<!-- raw HTML omitted -->• Store initial Raw Data in CSV/Parquet format.</td>
+					<td style="text-align: center"><code>Completed</code></td>
+					<td style="text-align: left">• Ingesting over 3,000 tickers using <code>pandas</code> was extremely slow.<!-- raw HTML omitted -->• Yahoo Finance API hit rate limits and frequent request timeouts.</td>
+					<td style="text-align: left">• Migrated to <strong>Polars</strong> for data processing (10–50x speedup over Pandas).<!-- raw HTML omitted -->• Implemented asynchronous batch processing and chunking.</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>Week 2</strong></td>
+					<td style="text-align: left"><strong>AWS Cloud Architecture &amp; S3 Bucket Layering</strong><!-- raw HTML omitted -->• Configure AWS IAM roles and S3 Bucket hierarchy.<!-- raw HTML omitted -->• Design 4-tier storage architecture: <code>raw/</code>, <code>cleansed_daily/</code>, <code>processed/</code>, <code>quarantine/</code>.<!-- raw HTML omitted -->• Build <code>s3_service.py</code> utility module for S3 interaction.</td>
+					<td style="text-align: center"><code>Completed</code></td>
+					<td style="text-align: left">• Complexities in organizing historical Parquet data spanning from 1962 to present.<!-- raw HTML omitted -->• High S3 read/write IOPS and storage costs.</td>
+					<td style="text-align: left">• Partitioned historical dataset by year (<code>processed/YYYY.parquet</code>) for query optimization.<!-- raw HTML omitted -->• Utilized Snappy-compressed <strong>Parquet</strong> format to minimize storage footprint.</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>Week 3</strong></td>
+					<td style="text-align: left"><strong>Data Quality Gate &amp; Quarantine Mechanism</strong><!-- raw HTML omitted -->• Develop <code>validator.py</code> for schema and data quality verification.<!-- raw HTML omitted -->• Build <code>quarantine.py</code> to isolate corrupted or invalid data.<!-- raw HTML omitted -->• Package and deploy <code>lambda_quality_gate.py</code>.</td>
+					<td style="text-align: center"><code>Completed</code></td>
+					<td style="text-align: left">• Ingested data contained anomalies: missing values (null/NaN), negative prices, duplicate dates, missing trading days.<!-- raw HTML omitted -->• Dirty data leaked into main pipeline, corrupting technical indicator calculations.</td>
+					<td style="text-align: left">• Defined strict Data Quality Gate rules.<!-- raw HTML omitted -->• Automatically routed invalid records to <code>quarantine/</code> S3 prefix with detailed error logs without breaking the pipeline execution.</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>Week 4</strong></td>
+					<td style="text-align: left"><strong>Feature Engineering Engine Development</strong><!-- raw HTML omitted -->• Design <code>transform.py</code> computing 16 technical indicators using Polars.<!-- raw HTML omitted -->• Indicators: SMA (10, 20, 50), EMA, RSI, MACD, Bollinger Bands, Volatility, Price Lags.<!-- raw HTML omitted -->• Define classification target label (<code>Target_Return_1D_Class</code>).</td>
+					<td style="text-align: center"><code>Completed</code></td>
+					<td style="text-align: left">• Complex time-series window functions handling missing trading days.<!-- raw HTML omitted -->• Risk of <strong>Look-ahead Bias</strong> (data leakage from future prices).</td>
+					<td style="text-align: left">• Applied Polars Window functions partitioned by <code>Ticker</code> and strictly ordered by <code>Date</code>.<!-- raw HTML omitted -->• Audited shift/lag logic to ensure technical features rely strictly on historical data.</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>Week 5</strong></td>
+					<td style="text-align: left"><strong>Serverless Fan-Out Architecture (AWS SQS &amp; EventBridge)</strong><!-- raw HTML omitted -->• Implement <code>lambda_daily_collector.py</code> (Producer) reading <code>tickers.json</code> and sending SQS messages.<!-- raw HTML omitted -->• Implement <code>lambda_collector_producer.py</code> (Consumer) processing SQS messages to fetch data.<!-- raw HTML omitted -->• Configure AWS EventBridge Cron for automated daily orchestration.</td>
+					<td style="text-align: center"><code>Completed</code></td>
+					<td style="text-align: left">• AWS Lambda hit the <strong>15-minute timeout</strong> when downloading data for 3,000+ tickers sequentially.<!-- raw HTML omitted -->• Partial consumer failures caused data chunk loss.</td>
+					<td style="text-align: left">• Implemented <strong>Fan-Out Pattern</strong>: Producer Lambda splits tickers into small chunks (e.g., 50 tickers) and pushes to <strong>AWS SQS Queue</strong>.<!-- raw HTML omitted -->• Multiple Consumer Lambdas execute in parallel.<!-- raw HTML omitted -->• Configured Dead Letter Queue (DLQ) for failed message handling.</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>Week 6</strong></td>
+					<td style="text-align: left"><strong>Machine Learning Model Training (XGBoost Classifier)</strong><!-- raw HTML omitted -->• Write <code>train_model.py</code> script to train price movement direction classifier (Up/Down).<!-- raw HTML omitted -->• Perform Time-series data splitting (Train/Validation/Test).<!-- raw HTML omitted -->• Evaluate model performance (Accuracy, Precision, Recall, AUC, Feature Importance) and export <code>training_report.md</code>.</td>
+					<td style="text-align: center"><code>Completed</code></td>
+					<td style="text-align: left">• Class imbalance between bullish and bearish trading days.<!-- raw HTML omitted -->• Risk of overfitting on historical market regimes.</td>
+					<td style="text-align: left">• Employed <strong>TimeSeriesSplit</strong> cross-validation instead of standard random K-Fold.<!-- raw HTML omitted -->• Fine-tuned XGBoost hyper-parameters and adjusted <code>scale_pos_weight</code>.<!-- raw HTML omitted -->• Uploaded trained model artifact (<code>xgboost_v1.json</code>) to S3.</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>Week 7</strong></td>
+					<td style="text-align: left"><strong>Predictor Service Deployment (AWS Lambda &amp; API Gateway)</strong><!-- raw HTML omitted -->• Implement <code>lambda_stock_predictor.py</code> loading model from S3 for real-time inference.<!-- raw HTML omitted -->• Connect Lambda with AWS API Gateway to expose RESTful endpoints.<!-- raw HTML omitted -->• Automatically compute <strong>Top 5 Recommended Stocks</strong> (highest win-rate probability).</td>
+					<td style="text-align: center"><code>Completed</code></td>
+					<td style="text-align: left">• Lambda deployment zip package exceeded limits due to heavy dependencies (XGBoost, Scikit-Learn).<!-- raw HTML omitted -->• Cold start latencies degraded API response time.</td>
+					<td style="text-align: left">• Packaged Lambda using <strong>Docker Container Image</strong> hosted on Amazon ECR.<!-- raw HTML omitted -->• Optimized Docker image layers to minimize cold start time.</td>
+			</tr>
+			<tr>
+					<td style="text-align: left"><strong>Week 8</strong></td>
+					<td style="text-align: left"><strong>Web Dashboard, Simulation Replay Engine &amp; Workshop Documentation</strong><!-- raw HTML omitted -->• Build interactive Streamlit Dashboard (<code>streamlit_app.py</code>).<!-- raw HTML omitted -->• Develop Replay Engine (<code>run_replay_local.py</code>, <code>lambda_replay_*</code>) for market data simulation.<!-- raw HTML omitted -->• Write comprehensive Workshop docs, README, and perform End-to-End system verification.</td>
+					<td style="text-align: center"><code>Completed</code></td>
+					<td style="text-align: left">• Synchronizing real-time data flow between API Gateway and Streamlit UI.<!-- raw HTML omitted -->• Simulating daily market stream for pipeline verification without waiting for live market open.</td>
+					<td style="text-align: left">• Designed stateful <strong>Replay Engine</strong> storing simulation state in S3 to replay data step-by-step.<!-- raw HTML omitted -->• Formatted step-by-step Workshop documentation for easy hands-on execution.</td>
 			</tr>
 	</tbody>
 </table>
+<hr>
 
 
 
@@ -1346,19 +1398,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785322479"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785322479"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785322479"></script>
-    <script src="/js/jquery.sticky.js?1785322479"></script>
-    <script src="/js/featherlight.min.js?1785322479"></script>
-    <script src="/js/highlight.pack.js?1785322479"></script>
+    <script src="/js/clipboard.min.js?1785382037"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785382037"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785382037"></script>
+    <script src="/js/jquery.sticky.js?1785382037"></script>
+    <script src="/js/featherlight.min.js?1785382037"></script>
+    <script src="/js/highlight.pack.js?1785382037"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785322479"></script>
-    <script src="/js/learn.js?1785322479"></script>
-    <script src="/js/hugo-learn.js?1785322479"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785382037"></script>
+    <script src="/js/learn.js?1785382037"></script>
+    <script src="/js/hugo-learn.js?1785382037"></script>
 
-    <link href="/mermaid/mermaid.css?1785322479" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785322479"></script>
+    <link href="/mermaid/mermaid.css?1785382037" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785382037"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

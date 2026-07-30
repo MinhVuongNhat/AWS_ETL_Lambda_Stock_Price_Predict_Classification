@@ -12,21 +12,21 @@
     <title>Đề xuất dự án :: AWS ETL Dự đoán Giá Cổ Phiếu</title>
 
     
-    <link href="/css/nucleus.css?1785322479" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785322479" rel="stylesheet">
-    <link href="/css/hybrid.css?1785322479" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785322479" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785322479" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785322479" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785322479" rel="stylesheet">
-    <link href="/css/theme.css?1785322479" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785322479" rel="stylesheet">
+    <link href="/css/nucleus.css?1785382037" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785382037" rel="stylesheet">
+    <link href="/css/hybrid.css?1785382037" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785382037" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785382037" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785382037" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785382037" rel="stylesheet">
+    <link href="/css/theme.css?1785382037" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785382037" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785322479" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785382037" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785322479"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785382037"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785322479"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785322479"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785382037"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785382037"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785322479"></script>
+<script type="text/javascript" src="/js/search.js?1785382037"></script>
 
     
   </div>
@@ -877,6 +877,9 @@
     <li>
       <ul>
         <li></li>
+        <li><a href="#1-tổng-quan-bài-toán-và-mục-tiêu-cốt-lõi">1. Tổng quan bài toán và Mục tiêu cốt lõi</a></li>
+        <li><a href="#2-kiến-trúc-hệ-thống-aws-architecture">2. Kiến trúc Hệ thống (AWS Architecture)</a></li>
+        <li><a href="#3-chi-tiết-các-thành-phần-kỹ-thuật">3. Chi tiết các Thành phần Kỹ thuật</a></li>
       </ul>
     </li>
   </ul>
@@ -905,9 +908,9 @@
 
 
 	<h4 id="đề-xuất-dự-án">Đề xuất dự án</h4>
-<p><em>[Mô tả mục tiêu, phạm vi, cách tiếp cận kỹ thuật và kết quả mong đợi của dự án.]</em></p>
+<p><em>Tài liệu đề xuất dự án chi tiết bao gồm tổng quan bài toán, mục tiêu cốt lõi, kiến trúc AWS Cloud, mô hình kho dữ liệu, bộ máy kiểm thử chiến lược Backtesting và kết quả mong đợi.</em></p>
 <hr>
-<h4 id="thông-tin-dự-án">Thông tin dự án</h4>
+<h4 id="tóm-tắt-thông-tin-dự-án">Tóm tắt thông tin dự án</h4>
 <table>
 	<thead>
 			<tr>
@@ -918,35 +921,178 @@
 	<tbody>
 			<tr>
 					<td style="text-align: left"><strong>Tên dự án</strong></td>
-					<td style="text-align: left">AWS Serverless ETL Pipeline &amp; Dự đoán Giá Cổ Phiếu</td>
+					<td style="text-align: left">END-TO-END DATA PIPELINE &amp; BACKTESTING ENGINE FOR STOCK MARKET DIRECTION</td>
 			</tr>
 			<tr>
 					<td style="text-align: left"><strong>Tác giả</strong></td>
-					<td style="text-align: left"></td>
+					<td style="text-align: left">Vương Nhật Minh, Phạm Đức Hoài Nam</td>
 			</tr>
 			<tr>
 					<td style="text-align: left"><strong>Người hướng dẫn</strong></td>
-					<td style="text-align: left"></td>
+					<td style="text-align: left">Lữ Hoàn Thiện</td>
 			</tr>
 			<tr>
 					<td style="text-align: left"><strong>Ngày bắt đầu</strong></td>
-					<td style="text-align: left"></td>
+					<td style="text-align: left">08/06/2026</td>
 			</tr>
 			<tr>
 					<td style="text-align: left"><strong>Ngày kết thúc</strong></td>
-					<td style="text-align: left"></td>
+					<td style="text-align: left">31/07/2026</td>
 			</tr>
 	</tbody>
 </table>
 <hr>
-<h4 id="mục-tiêu">Mục tiêu</h4>
-<p><em>[Điền vào đây.]</em></p>
+<h3 id="1-tổng-quan-bài-toán-và-mục-tiêu-cốt-lõi">1. Tổng quan bài toán và Mục tiêu cốt lõi</h3>
+<p>Hệ thống được thiết kế nhằm tự động hóa toàn bộ chu trình từ thu thập dữ liệu chứng khoán, xử lý chuẩn hóa, huấn luyện mô hình học máy đến kiểm thử chiến lược (Backtesting) và đưa ra dự báo xu hướng giá cổ phiếu hằng ngày.</p>
+<h4 id="11-bài-toán-core-core-objective">1.1. Bài toán Core (Core Objective)</h4>
+<ul>
+<li><strong>Mô tả:</strong> Phân loại nhị phân xu hướng dịch chuyển giá cổ phiếu cho ngày giao dịch tiếp theo T+1.</li>
+<li><strong>Định nghĩa Nhãn (Target Label):</strong>
+<ul>
+<li><strong>Label 1 (Tăng):</strong> (T+1) &gt; (T)</li>
+<li><strong>Label 0 (Giảm hoặc Đi ngang):</strong> (T+1) &lt;= (T)</li>
+</ul>
+</li>
+</ul>
+<h4 id="12-bài-toán-mở-rộng-business-value-extension">1.2. Bài toán Mở rộng (Business Value Extension)</h4>
+<ul>
+<li><strong>Top Stock Recommendation:</strong> Xếp hạng và gợi ý danh mục cổ phiếu tiềm năng nhất trong ngày dựa trên xác suất chiến thắng (Confidence Score) đầu ra của mô hình Core.</li>
+</ul>
+<h4 id="13-mục-tiêu-hệ-thống">1.3. Mục tiêu Hệ thống</h4>
+<ul>
+<li>Tự động hóa hoàn toàn Luồng dữ liệu (Data Pipeline) và chu trình MLOps trên nền tảng điện toán đám mây AWS.</li>
+<li>Cung cấp giao diện tương tác trực quan, độ trễ thấp cho người dùng cuối thông qua ứng dụng Streamlit Dashboard.</li>
+</ul>
 <hr>
-<h4 id="phương-pháp-tiếp-cận-kỹ-thuật">Phương pháp tiếp cận kỹ thuật</h4>
-<p><em>[Điền vào đây.]</em></p>
-<hr>
-<h4 id="kết-quả-mong-đợi">Kết quả mong đợi</h4>
-<p><em>[Điền vào đây.]</em></p>
+<h3 id="2-kiến-trúc-hệ-thống-aws-architecture">2. Kiến trúc Hệ thống (AWS Architecture)</h3>
+<p>Hệ thống vận hành dựa trên kiến trúc Serverless, chia làm 2 phân hệ độc lập nhằm tối ưu hiệu năng:</p>
+<h4 id="21-phân-hệ-luồng-dữ-liệu--huấn-luyện-batch-data-pipeline--training">2.1. Phân hệ Luồng dữ liệu &amp; Huấn luyện (Batch Data Pipeline &amp; Training)</h4>
+<ul>
+<li><strong>Data Validation &amp; ETL Pipeline:</strong>
+<ul>
+<li><strong>EventBridge</strong> kích hoạt <code>Lambda Downloader</code> vào cuối mỗi ngày giao dịch.</li>
+<li><strong>Lambda Downloader</strong> tải dữ liệu OHLCV từ Yahoo Finance và lưu trực tiếp vào <code>S3 Raw Zone</code> dưới định dạng Parquet (<code>{SYMBOL}.parquet</code>).</li>
+<li>Khi có object mới trong thư mục <code>raw/</code>, <strong>S3 Event Notification</strong> tự động kích hoạt <code>Lambda ETL</code>.</li>
+<li><strong>Lambda ETL (Container Image):</strong>
+<ol>
+<li>Đọc Parquet từ S3 bằng <strong>Polars</strong>.</li>
+<li>Kiểm tra schema bằng <strong>Pandera</strong>.</li>
+<li>Kiểm tra quy tắc nghiệp vụ ($\text{High} \ge \text{Low}$, $\text{Open} &gt; 0$, $\text{Close} &gt; 0$, $\text{Volume} \ge 0$).</li>
+<li>Loại bỏ bản ghi trùng lặp theo <code>(Date, Symbol)</code>.</li>
+<li>Xử lý Missing Values và chuẩn hóa kiểu dữ liệu.</li>
+<li>Gom các mã tổ chức lại theo năm nhằm giảm số lượng object trên S3 và tối ưu hiệu năng xử lý.</li>
+<li>Ghi kết quả sang <code>S3 Processed Zone</code>.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[Yahoo Finance] ──(EventBridge + Lambda lấy data hàng ngày)──&gt; [S3 Raw Zone] (raw parquet)
+</span></span><span style="display:flex;"><span>                                                                    │
+</span></span><span style="display:flex;"><span>                                                           (S3 Event Trigger)
+</span></span><span style="display:flex;"><span>                                                                    ▼
+</span></span><span style="display:flex;"><span>                                                              [Lambda ETL]
+</span></span><span style="display:flex;"><span>                                                                    │
+</span></span><span style="display:flex;"><span>                                                           (Validation Pandera)
+</span></span><span style="display:flex;"><span>                                                                    ▼
+</span></span><span style="display:flex;"><span>                                                     [S3 Processed Zone] (clean parquet)
+</span></span><span style="display:flex;"><span>                                                                    │
+</span></span><span style="display:flex;"><span>                                                      (Feature Engineering Polars)
+</span></span><span style="display:flex;"><span>                                                                    ▼
+</span></span><span style="display:flex;"><span>[Athena + Glue Catalog] &lt;──────────────────────────────── [S3 Feature Store]
+</span></span><span style="display:flex;"><span>           │                                                        │
+</span></span><span style="display:flex;"><span>           ▼                                                        ▼
+</span></span><span style="display:flex;"><span>     [QuickSight]                                       [Local Training] (XGBoost)
+</span></span><span style="display:flex;"><span>      *(Optional)                                                   │
+</span></span><span style="display:flex;"><span>                                                                    ▼
+</span></span><span style="display:flex;"><span>                                                          [S3 Model Registry]
+</span></span><span style="display:flex;"><span>                                                                    │
+</span></span><span style="display:flex;"><span>                                                                    ▼
+</span></span><span style="display:flex;"><span>            [EventBridge] ──────trigger──────&gt; [Lambda Batch Inference]
+</span></span><span style="display:flex;"><span>                                                                    │
+</span></span><span style="display:flex;"><span>                                                      (Dự đoán hàng ngày &amp; Lưu kết quả)
+</span></span><span style="display:flex;"><span>                                                                    ▼
+</span></span><span style="display:flex;"><span>                                                               [DynamoDB]
+</span></span><span style="display:flex;"><span>                                                                    ▲
+</span></span><span style="display:flex;"><span>                                                                    │
+</span></span><span style="display:flex;"><span>                                                          [Lambda API Handler]
+</span></span><span style="display:flex;"><span>                                                                    ▲
+</span></span><span style="display:flex;"><span>                                                                    │
+</span></span><span style="display:flex;"><span>                                                              [API Gateway]
+</span></span><span style="display:flex;"><span>                                                                    ▲
+</span></span><span style="display:flex;"><span>                                                                    │
+</span></span><span style="display:flex;"><span>                                                    [Web Dashboard] (Streamlit)
+</span></span></code></pre></div><h4 id="22-phân-hệ-dự-đoán--phục-vụ-giao-diện-inference--serving-pipeline">2.2. Phân hệ Dự đoán &amp; Phục vụ Giao diện (Inference &amp; Serving Pipeline)</h4>
+<ul>
+<li><strong>Batch Inference:</strong> Định kỳ hằng ngày, EventBridge trigger Lambda tải <code>model.pkl</code> mới nhất từ S3 \(\rightarrow\) Lấy các đặc trưng mới nhất từ Feature Store \(\rightarrow\) Thực hiện dự đoán xu hướng cho toàn bộ danh sách mã cổ phiếu \(\rightarrow\) Lưu kết quả kèm Confidence Score vào <strong>Amazon DynamoDB</strong>.</li>
+<li><strong>API Serving:</strong> Người dùng tương tác trên Streamlit Dashboard \(\rightarrow\) Gửi yêu cầu qua <strong>API Gateway</strong> \(\rightarrow\) <code>Lambda API Handler</code> truy vấn trực tiếp từ DynamoDB để trả về kết quả ngay lập tức (giảm thiểu tối đa Latency so với việc chạy mô hình Real-time).</li>
+</ul>
+<h4 id="23-đóng-gói-container-containerized-etl-deployment">2.3. Đóng gói Container (Containerized ETL Deployment)</h4>
+<p><code>Lambda ETL</code> được đóng gói dưới dạng <strong>Docker Container Image</strong> tải lên <strong>Amazon ECR</strong> thay vì ZIP package nhằm hỗ trợ các thư viện có kích thước lớn như:</p>
+<ul>
+<li><code>Polars</code> &amp; <code>PyArrow</code></li>
+<li><code>Pandera</code> &amp; <code>Scikit-Learn</code> / <code>XGBoost</code></li>
+</ul>
+<p><strong>Quy trình triển khai:</strong>
+</p>
+\[\text{Local Source Code} \longrightarrow \text{Docker Build} \longrightarrow \text{Amazon ECR} \longrightarrow \text{AWS Lambda Container} \longleftarrow \text{S3 Trigger}\]<h4 id="24-cấu-trúc-mô-đun-lambda">2.4. Cấu trúc Mô-đun Lambda</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Lambda ETL Architecture
+</span></span><span style="display:flex;"><span>├── lambda_function.py     # Entry Point
+</span></span><span style="display:flex;"><span>├── config.py              # Biến môi trường &amp; Đường dẫn S3
+</span></span><span style="display:flex;"><span>├── validation/
+</span></span><span style="display:flex;"><span>│   ├── schemas.py         # Pandera Data Schemas
+</span></span><span style="display:flex;"><span>│   └── validator.py       # Quy tắc kiểm định Data Quality
+</span></span><span style="display:flex;"><span>├── transform/
+</span></span><span style="display:flex;"><span>│   └── cleaning.py        # Polars ETL &amp; Làm sạch dữ liệu
+</span></span><span style="display:flex;"><span>├── services/
+</span></span><span style="display:flex;"><span>│   └── s3_service.py      # Module tương tác Boto3 S3
+</span></span><span style="display:flex;"><span>└── utils/
+</span></span><span style="display:flex;"><span>    └── logger.py          # Log hệ thống
+</span></span></code></pre></div><hr>
+<h3 id="3-chi-tiết-các-thành-phần-kỹ-thuật">3. Chi tiết các Thành phần Kỹ thuật</h3>
+<h4 id="31-dữ-liệu-và-feature-engineering">3.1. Dữ liệu và Feature Engineering</h4>
+<ul>
+<li><strong>Dữ liệu đầu vào (OHLCV):</strong> Open, High, Low, Close, Volume.</li>
+<li><strong>Danh sách Đặc trưng (Features):</strong>
+<ul>
+<li><strong>Momentum &amp; Trend:</strong> SMA20, SMA50, EMA20, EMA50, MACD.</li>
+<li><strong>Oscillators:</strong> RSI (14 days).</li>
+<li><strong>Volatility:</strong> ATR (Average True Range), Volatility (20 days).</li>
+<li><strong>Volume:</strong> Volume Ratio (\(\text{Volume}_T / \text{SMA20}(\text{Volume})\)).</li>
+<li><strong>Returns:</strong> Return_1 (Lợi nhuận 1 ngày), Return_5 (Lợi nhuận 5 ngày).</li>
+</ul>
+</li>
+</ul>
+<h4 id="32-kho-dữ-liệu-data-warehouse-star-schema">3.2. Kho dữ liệu (Data Warehouse Star Schema)</h4>
+<ul>
+<li><strong>Fact Tables:</strong>
+<ul>
+<li><code>FactPrice</code>: <code>Date</code> | <code>Symbol</code> | <code>Open</code> | <code>High</code> | <code>Low</code> | <code>Close</code> | <code>Volume</code></li>
+<li><code>FactFeature</code>: <code>Date</code> | <code>Symbol</code> | <code>RSI</code> | <code>MACD</code> | <code>ATR</code> | <code>Target</code></li>
+</ul>
+</li>
+<li><strong>Dimension Tables:</strong>
+<ul>
+<li><code>DimDate</code>: <code>Date</code> | <code>Month</code> | <code>Quarter</code> | <code>Year</code></li>
+<li><code>DimSymbol</code>: <code>Symbol</code> | <code>AssetType</code> (Stock/ETF) | <code>Sector</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="33-bộ-máy-kiểm-thử-backtesting-engine">3.3. Bộ máy Kiểm thử (Backtesting Engine)</h4>
+<p>Mô phỏng hiệu năng tài chính của mô hình dựa trên quy tắc giao dịch:</p>
+<ul>
+<li><strong>Tín hiệu Mua/Nắm giữ:</strong> Khi Model dự đoán nhãn 1 (Xu hướng tăng).</li>
+<li><strong>Tín hiệu Bán/Đứng ngoài:</strong> Khi Model dự đoán nhãn 0 (Xu hướng giảm/đi ngang).</li>
+<li><strong>Chỉ số đánh giá chính (Financial Metrics):</strong>
+<ul>
+<li><strong>Total Profit:</strong> Lợi nhuận ròng cuối kỳ.</li>
+<li><strong>Win Rate:</strong> Tỷ lệ lệnh sinh lời trên tổng số lệnh cấu thành.</li>
+<li><strong>Sharpe Ratio:</strong> Đo lường hiệu suất sinh lời trên một đơn vị rủi ro.</li>
+<li><strong>Max Drawdown:</strong> Mức sụt giảm vốn lớn nhất tính từ đỉnh vốn (Đo lường rủi ro hệ thống).</li>
+<li><strong>Đối chứng:</strong> So sánh trực tiếp hiệu quả của chiến lược với phương pháp Mua và Nắm giữ thụ động (Buy &amp; Hold).</li>
+</ul>
+</li>
+</ul>
 
 
 
@@ -1371,19 +1517,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785322479"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785322479"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785322479"></script>
-    <script src="/js/jquery.sticky.js?1785322479"></script>
-    <script src="/js/featherlight.min.js?1785322479"></script>
-    <script src="/js/highlight.pack.js?1785322479"></script>
+    <script src="/js/clipboard.min.js?1785382037"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785382037"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785382037"></script>
+    <script src="/js/jquery.sticky.js?1785382037"></script>
+    <script src="/js/featherlight.min.js?1785382037"></script>
+    <script src="/js/highlight.pack.js?1785382037"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785322479"></script>
-    <script src="/js/learn.js?1785322479"></script>
-    <script src="/js/hugo-learn.js?1785322479"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785382037"></script>
+    <script src="/js/learn.js?1785382037"></script>
+    <script src="/js/hugo-learn.js?1785382037"></script>
 
-    <link href="/mermaid/mermaid.css?1785322479" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785322479"></script>
+    <link href="/mermaid/mermaid.css?1785382037" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785382037"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

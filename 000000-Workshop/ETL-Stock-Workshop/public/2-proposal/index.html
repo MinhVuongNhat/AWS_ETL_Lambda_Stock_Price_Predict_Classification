@@ -12,21 +12,21 @@
     <title>Proposal :: AWS ETL Stock Price Prediction</title>
 
     
-    <link href="/css/nucleus.css?1785322479" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785322479" rel="stylesheet">
-    <link href="/css/hybrid.css?1785322479" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785322479" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785322479" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785322479" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785322479" rel="stylesheet">
-    <link href="/css/theme.css?1785322479" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785322479" rel="stylesheet">
+    <link href="/css/nucleus.css?1785382037" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785382037" rel="stylesheet">
+    <link href="/css/hybrid.css?1785382037" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785382037" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785382037" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785382037" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785382037" rel="stylesheet">
+    <link href="/css/theme.css?1785382037" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785382037" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785322479" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785382037" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785322479"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785382037"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785322479"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785322479"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785382037"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785382037"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785322479"></script>
+<script type="text/javascript" src="/js/search.js?1785382037"></script>
 
     
   </div>
@@ -877,6 +877,9 @@
     <li>
       <ul>
         <li></li>
+        <li><a href="#1-project-overview--core-objectives">1. Project Overview &amp; Core Objectives</a></li>
+        <li><a href="#2-system-architecture-aws-architecture">2. System Architecture (AWS Architecture)</a></li>
+        <li><a href="#3-detailed-technical-components">3. Detailed Technical Components</a></li>
       </ul>
     </li>
   </ul>
@@ -905,9 +908,9 @@
 
 
 	<h4 id="project-proposal">Project Proposal</h4>
-<p><em>[Project proposal — describes the objectives, scope, technical approach, and expected outcomes of the project.]</em></p>
+<p><em>Project proposal detailing the background, core objectives, AWS cloud architecture, data warehouse model, backtesting engine, and expected outcomes.</em></p>
 <hr>
-<h4 id="project-summary">Project Summary</h4>
+<h4 id="project-overview-summary">Project Overview Summary</h4>
 <table>
 	<thead>
 			<tr>
@@ -918,35 +921,178 @@
 	<tbody>
 			<tr>
 					<td style="text-align: left"><strong>Project Title</strong></td>
-					<td style="text-align: left">AWS Serverless ETL Pipeline &amp; Stock Price Prediction</td>
+					<td style="text-align: left">END-TO-END DATA PIPELINE &amp; BACKTESTING ENGINE FOR STOCK MARKET DIRECTION</td>
 			</tr>
 			<tr>
-					<td style="text-align: left"><strong>Author</strong></td>
-					<td style="text-align: left"></td>
+					<td style="text-align: left"><strong>Authors</strong></td>
+					<td style="text-align: left">Vương Nhật Minh, Phạm Đức Hoài Nam</td>
 			</tr>
 			<tr>
 					<td style="text-align: left"><strong>Supervisor</strong></td>
-					<td style="text-align: left"></td>
+					<td style="text-align: left">Lữ Hoàn Thiện</td>
 			</tr>
 			<tr>
 					<td style="text-align: left"><strong>Start Date</strong></td>
-					<td style="text-align: left"></td>
+					<td style="text-align: left">June 8, 2026</td>
 			</tr>
 			<tr>
 					<td style="text-align: left"><strong>End Date</strong></td>
-					<td style="text-align: left"></td>
+					<td style="text-align: left">July 31, 2026</td>
 			</tr>
 	</tbody>
 </table>
 <hr>
-<h4 id="objectives">Objectives</h4>
-<p><em>[To be filled in.]</em></p>
+<h3 id="1-project-overview--core-objectives">1. Project Overview &amp; Core Objectives</h3>
+<p>The system is designed to automate the complete end-to-end lifecycle from stock market data ingestion, data cleansing &amp; standardization, machine learning model training, backtesting strategy simulation, to serving daily stock price directional predictions.</p>
+<h4 id="11-core-problem-statement">1.1. Core Problem Statement</h4>
+<ul>
+<li><strong>Objective:</strong> Binary classification of next-day stock price directional movement T+1.</li>
+<li><strong>Target Label Definition:</strong>
+<ul>
+<li><strong>Label 1 (Up / Bullish):</strong> (T+1) &gt; (T)</li>
+<li><strong>Label 0 (Down or Bearish/Sideways):</strong> (T+1) &lt;= (T)</li>
+</ul>
+</li>
+</ul>
+<h4 id="12-business-value-extension-optional--future-scope">1.2. Business Value Extension (Optional / Future Scope)</h4>
+<ul>
+<li><strong>Top Stock Recommendation:</strong> Rank and suggest top potential stock portfolios daily based on the model&rsquo;s prediction confidence scores.</li>
+</ul>
+<h4 id="13-system-goals">1.3. System Goals</h4>
+<ul>
+<li>Fully automate the Data Pipeline and MLOps lifecycle on AWS cloud infrastructure.</li>
+<li>Provide a low-latency, interactive web dashboard for end-users via Streamlit.</li>
+</ul>
 <hr>
-<h4 id="technical-approach">Technical Approach</h4>
-<p><em>[To be filled in.]</em></p>
-<hr>
-<h4 id="expected-outcomes">Expected Outcomes</h4>
-<p><em>[To be filled in.]</em></p>
+<h3 id="2-system-architecture-aws-architecture">2. System Architecture (AWS Architecture)</h3>
+<p>The solution operates on a Serverless Architecture decoupled into 2 independent sub-systems for maximum performance:</p>
+<h4 id="21-batch-data-pipeline--training-subsystem">2.1. Batch Data Pipeline &amp; Training Subsystem</h4>
+<ul>
+<li><strong>Data Validation &amp; ETL Pipeline:</strong>
+<ul>
+<li><strong>EventBridge</strong> triggers <code>Lambda Downloader</code> at the end of each trading day.</li>
+<li><strong>Lambda Downloader</strong> fetches OHLCV market data from Yahoo Finance and uploads raw records to <code>S3 Raw Zone</code> formatted as Parquet files (<code>{SYMBOL}.parquet</code>).</li>
+<li>Object creation in <code>raw/</code> triggers <strong>S3 Event Notifications</strong> to invoke <code>Lambda ETL</code>.</li>
+<li><strong>Lambda ETL (Container Image):</strong>
+<ol>
+<li>Reads Parquet from S3 using <strong>Polars</strong>.</li>
+<li>Validates Schema with <strong>Pandera</strong>.</li>
+<li>Enforces business validation rules ($\text{High} \ge \text{Low}$, $\text{Open} &gt; 0$, $\text{Close} &gt; 0$, $\text{Volume} \ge 0$).</li>
+<li>Deduplicates records on <code>(Date, Symbol)</code>.</li>
+<li>Imputes missing values and standardizes data types.</li>
+<li>Aggregates data by year to reduce S3 object counts and optimize query throughput.</li>
+<li>Writes cleansed output to <code>S3 Processed Zone</code>.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>[Yahoo Finance] ──(EventBridge + Daily Lambda Collector)──&gt; [S3 Raw Zone] (raw parquet)
+</span></span><span style="display:flex;"><span>                                                                 │
+</span></span><span style="display:flex;"><span>                                                      (S3 Event Notification)
+</span></span><span style="display:flex;"><span>                                                                 ▼
+</span></span><span style="display:flex;"><span>                                                           [Lambda ETL]
+</span></span><span style="display:flex;"><span>                                                                 │
+</span></span><span style="display:flex;"><span>                                                       (Validation Pandera)
+</span></span><span style="display:flex;"><span>                                                                 ▼
+</span></span><span style="display:flex;"><span>                                                  [S3 Processed Zone] (clean parquet)
+</span></span><span style="display:flex;"><span>                                                                 │
+</span></span><span style="display:flex;"><span>                                                    (Feature Engineering Polars)
+</span></span><span style="display:flex;"><span>                                                                 ▼
+</span></span><span style="display:flex;"><span>[Athena + Glue Catalog] &lt;───────────────────────────── [S3 Feature Store]
+</span></span><span style="display:flex;"><span>           │                                                     │
+</span></span><span style="display:flex;"><span>           ▼                                                     ▼
+</span></span><span style="display:flex;"><span>     [QuickSight]                                    [Model Training] (XGBoost)
+</span></span><span style="display:flex;"><span>      *(Optional)                                                │
+</span></span><span style="display:flex;"><span>                                                                 ▼
+</span></span><span style="display:flex;"><span>                                                       [S3 Model Registry]
+</span></span><span style="display:flex;"><span>                                                                 │
+</span></span><span style="display:flex;"><span>                                                                 ▼
+</span></span><span style="display:flex;"><span>            [EventBridge] ──────trigger──────&gt; [Lambda Batch Inference]
+</span></span><span style="display:flex;"><span>                                                                 │
+</span></span><span style="display:flex;"><span>                                                    (Daily Predictions &amp; Storage)
+</span></span><span style="display:flex;"><span>                                                                 ▼
+</span></span><span style="display:flex;"><span>                                                            [DynamoDB]
+</span></span><span style="display:flex;"><span>                                                                 ▲
+</span></span><span style="display:flex;"><span>                                                                 │
+</span></span><span style="display:flex;"><span>                                                       [Lambda API Handler]
+</span></span><span style="display:flex;"><span>                                                                 ▲
+</span></span><span style="display:flex;"><span>                                                                 │
+</span></span><span style="display:flex;"><span>                                                           [API Gateway]
+</span></span><span style="display:flex;"><span>                                                                 ▲
+</span></span><span style="display:flex;"><span>                                                                 │
+</span></span><span style="display:flex;"><span>                                                     [Web Dashboard] (Streamlit)
+</span></span></code></pre></div><h4 id="22-inference--serving-subsystem">2.2. Inference &amp; Serving Subsystem</h4>
+<ul>
+<li><strong>Batch Inference:</strong> EventBridge daily trigger launches Lambda to load the latest <code>model.pkl</code> from S3 \(\rightarrow\) Fetch latest features from Feature Store \(\rightarrow\) Run directional inference for all NASDAQ symbols \(\rightarrow\) Persist predictions with confidence scores into <strong>Amazon DynamoDB</strong>.</li>
+<li><strong>API Serving:</strong> Users interact with the Streamlit Dashboard \(\rightarrow\) Requests sent to <strong>AWS API Gateway</strong> \(\rightarrow\) <code>Lambda API Handler</code> fetches directly from DynamoDB for sub-second latency response (eliminating real-time model inference overhead).</li>
+</ul>
+<h4 id="23-containerization-containerized-etl-deployment">2.3. Containerization (Containerized ETL Deployment)</h4>
+<p><code>Lambda ETL</code> is containerized using <strong>Docker</strong> pushed to <strong>Amazon ECR</strong> instead of standard ZIP packages to accommodate heavy dependencies:</p>
+<ul>
+<li><code>Polars</code> &amp; <code>PyArrow</code></li>
+<li><code>Pandera</code> &amp; <code>Scikit-Learn</code> / <code>XGBoost</code></li>
+</ul>
+<p><strong>Deployment Workflow:</strong>
+</p>
+\[\text{Local Source Code} \longrightarrow \text{Docker Build} \longrightarrow \text{Amazon ECR} \longrightarrow \text{AWS Lambda Container} \longleftarrow \text{S3 Trigger}\]<h4 id="24-lambda-project-structure">2.4. Lambda Project Structure</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Lambda ETL Architecture
+</span></span><span style="display:flex;"><span>├── lambda_function.py     # Entry Point
+</span></span><span style="display:flex;"><span>├── config.py              # Environment Variables &amp; S3 Paths
+</span></span><span style="display:flex;"><span>├── validation/
+</span></span><span style="display:flex;"><span>│   ├── schemas.py         # Pandera Data Schemas
+</span></span><span style="display:flex;"><span>│   └── validator.py       # Data Quality Rules
+</span></span><span style="display:flex;"><span>├── transform/
+</span></span><span style="display:flex;"><span>│   └── cleaning.py        # Polars ETL &amp; Indicators
+</span></span><span style="display:flex;"><span>├── services/
+</span></span><span style="display:flex;"><span>│   └── s3_service.py      # Boto3 S3 Helpers
+</span></span><span style="display:flex;"><span>└── utils/
+</span></span><span style="display:flex;"><span>    └── logger.py          # Structured Logger
+</span></span></code></pre></div><hr>
+<h3 id="3-detailed-technical-components">3. Detailed Technical Components</h3>
+<h4 id="31-data--feature-engineering">3.1. Data &amp; Feature Engineering</h4>
+<ul>
+<li><strong>Raw Input (OHLCV):</strong> Open, High, Low, Close, Volume.</li>
+<li><strong>Engineered Feature Set:</strong>
+<ul>
+<li><strong>Momentum &amp; Trend:</strong> SMA20, SMA50, EMA20, EMA50, MACD.</li>
+<li><strong>Oscillators:</strong> RSI (14 days).</li>
+<li><strong>Volatility:</strong> ATR (Average True Range), Volatility (20 days).</li>
+<li><strong>Volume:</strong> Volume Ratio (\(\text{Volume}_T / \text{SMA20}(\text{Volume})\)).</li>
+<li><strong>Returns:</strong> 1-day Return ($\text{Return}_1$), 5-day Return ($\text{Return}_5$).</li>
+</ul>
+</li>
+</ul>
+<h4 id="32-data-warehouse-star-schema-model">3.2. Data Warehouse (Star Schema Model)</h4>
+<ul>
+<li><strong>Fact Tables:</strong>
+<ul>
+<li><code>FactPrice</code>: <code>Date</code> | <code>Symbol</code> | <code>Open</code> | <code>High</code> | <code>Low</code> | <code>Close</code> | <code>Volume</code></li>
+<li><code>FactFeature</code>: <code>Date</code> | <code>Symbol</code> | <code>RSI</code> | <code>MACD</code> | <code>ATR</code> | <code>Target</code></li>
+</ul>
+</li>
+<li><strong>Dimension Tables:</strong>
+<ul>
+<li><code>DimDate</code>: <code>Date</code> | <code>Month</code> | <code>Quarter</code> | <code>Year</code></li>
+<li><code>DimSymbol</code>: <code>Symbol</code> | <code>AssetType</code> (Stock/ETF) | <code>Sector</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="33-financial-backtesting-engine">3.3. Financial Backtesting Engine</h4>
+<p>Simulates real-world financial performance based on model prediction signals:</p>
+<ul>
+<li><strong>Buy / Hold Signal:</strong> Model predicts Label 1 (Bullish trend).</li>
+<li><strong>Sell / Cash Signal:</strong> Model predicts Label 0 (Bearish / Sideways trend).</li>
+<li><strong>Evaluation Metrics:</strong>
+<ul>
+<li><strong>Total Profit:</strong> Net cumulative portfolio return.</li>
+<li><strong>Win Rate:</strong> Percentage of profitable trades out of total executed trades.</li>
+<li><strong>Sharpe Ratio:</strong> Risk-adjusted return metric.</li>
+<li><strong>Max Drawdown:</strong> Maximum peak-to-trough decline in portfolio equity (systemic risk assessment).</li>
+<li><strong>Benchmark:</strong> Direct performance comparison against a passive <strong>Buy &amp; Hold</strong> strategy.</li>
+</ul>
+</li>
+</ul>
 
 
 
@@ -1371,19 +1517,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785322479"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785322479"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785322479"></script>
-    <script src="/js/jquery.sticky.js?1785322479"></script>
-    <script src="/js/featherlight.min.js?1785322479"></script>
-    <script src="/js/highlight.pack.js?1785322479"></script>
+    <script src="/js/clipboard.min.js?1785382037"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785382037"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785382037"></script>
+    <script src="/js/jquery.sticky.js?1785382037"></script>
+    <script src="/js/featherlight.min.js?1785382037"></script>
+    <script src="/js/highlight.pack.js?1785382037"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785322479"></script>
-    <script src="/js/learn.js?1785322479"></script>
-    <script src="/js/hugo-learn.js?1785322479"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785382037"></script>
+    <script src="/js/learn.js?1785382037"></script>
+    <script src="/js/hugo-learn.js?1785382037"></script>
 
-    <link href="/mermaid/mermaid.css?1785322479" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785322479"></script>
+    <link href="/mermaid/mermaid.css?1785382037" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785382037"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
