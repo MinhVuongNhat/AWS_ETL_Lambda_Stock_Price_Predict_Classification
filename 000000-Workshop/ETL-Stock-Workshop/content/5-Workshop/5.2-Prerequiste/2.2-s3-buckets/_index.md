@@ -45,7 +45,7 @@ aws s3 mb s3://my-nasdaq-stock-simulation-2026-ap-southeast-1 \
     --region ap-southeast-1
 ```
 
-> *[TODO: Add screenshot of S3 buckets successfully created — `/images/2.2/s3-buckets-created.png`]*
+![S3 Buckets Created](/images/2.2/s3-buckets-created.png)
 
 ---
 
@@ -74,7 +74,7 @@ The `tickers.json` file contains **3,000+ NASDAQ tickers**. Upload it to S3:
 python upload_tickers_config.py --file tickers.json
 ```
 
-> *[TODO: Add screenshot of tickers.json uploaded in S3 — `/images/2.2/s3-tickers-uploaded.png`]*
+![S3 Tickers Uploaded](/images/2.2/s3-tickers-uploaded.png)
 
 {{%notice tip%}}
 Refresh the ticker list with the latest NASDAQ tickers using:

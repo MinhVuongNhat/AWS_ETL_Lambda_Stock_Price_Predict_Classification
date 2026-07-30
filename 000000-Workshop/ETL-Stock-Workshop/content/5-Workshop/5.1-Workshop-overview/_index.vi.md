@@ -34,7 +34,7 @@ Bạn sẽ thực hành:
 
 #### Kiến trúc hệ thống
 
-> *[TODO: Thêm ảnh sơ đồ kiến trúc — `/images/1-introduce/system-architecture.png`]*
+![Sơ đồ kiến trúc hệ thống](/images/1-introduce/system-architecture.png)
 
 Pipeline gồm **ba luồng xử lý chính**:
 

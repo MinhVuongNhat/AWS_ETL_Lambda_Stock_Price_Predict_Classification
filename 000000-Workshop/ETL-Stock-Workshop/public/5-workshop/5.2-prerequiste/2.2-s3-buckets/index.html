@@ -12,21 +12,21 @@
     <title>Create S3 Buckets :: AWS ETL Stock Price Prediction</title>
 
     
-    <link href="/css/nucleus.css?1785381714" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785381714" rel="stylesheet">
-    <link href="/css/hybrid.css?1785381714" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785381714" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785381714" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785381714" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785381714" rel="stylesheet">
-    <link href="/css/theme.css?1785381714" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785381714" rel="stylesheet">
+    <link href="/css/nucleus.css?1785395966" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785395966" rel="stylesheet">
+    <link href="/css/hybrid.css?1785395966" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785395966" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785395966" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785395966" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785395966" rel="stylesheet">
+    <link href="/css/theme.css?1785395966" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785395966" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785381714" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785395966" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785381714"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785395966"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785381714"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785381714"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785395966"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785395966"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785381714"></script>
+<script type="text/javascript" src="/js/search.js?1785395966"></script>
 
     
   </div>
@@ -966,9 +966,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Simulation Bucket — sandbox for Replay Simulator</span>
 </span></span><span style="display:flex;"><span>aws s3 mb s3://my-nasdaq-stock-simulation-2026-ap-southeast-1 <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span>    --region ap-southeast-1
-</span></span></code></pre></div><blockquote>
-<p><em>[TODO: Add screenshot of S3 buckets successfully created — <code>/images/2.2/s3-buckets-created.png</code>]</em></p>
-</blockquote>
+</span></span></code></pre></div><p><img src="/images/2.2/s3-buckets-created.png" alt="S3 Buckets Created"></p>
 <hr>
 <h4 id="step-2-verify-buckets">Step 2: Verify Buckets</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws s3 ls | grep my-nasdaq
@@ -981,9 +979,7 @@
 <h4 id="step-3-upload-tickers-list-to-s3">Step 3: Upload Tickers List to S3</h4>
 <p>The <code>tickers.json</code> file contains <strong>3,000+ NASDAQ tickers</strong>. Upload it to S3:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python upload_tickers_config.py --file tickers.json
-</span></span></code></pre></div><blockquote>
-<p><em>[TODO: Add screenshot of tickers.json uploaded in S3 — <code>/images/2.2/s3-tickers-uploaded.png</code>]</em></p>
-</blockquote>
+</span></span></code></pre></div><p><img src="/images/2.2/s3-tickers-uploaded.png" alt="S3 Tickers Uploaded"></p>
 
 <div class="notices tip" ><p>Refresh the ticker list with the latest NASDAQ tickers using:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python refresh_tickers_from_nasdaq.py
@@ -1421,19 +1417,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785381714"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785381714"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785381714"></script>
-    <script src="/js/jquery.sticky.js?1785381714"></script>
-    <script src="/js/featherlight.min.js?1785381714"></script>
-    <script src="/js/highlight.pack.js?1785381714"></script>
+    <script src="/js/clipboard.min.js?1785395966"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785395966"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785395966"></script>
+    <script src="/js/jquery.sticky.js?1785395966"></script>
+    <script src="/js/featherlight.min.js?1785395966"></script>
+    <script src="/js/highlight.pack.js?1785395966"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785381714"></script>
-    <script src="/js/learn.js?1785381714"></script>
-    <script src="/js/hugo-learn.js?1785381714"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785395966"></script>
+    <script src="/js/learn.js?1785395966"></script>
+    <script src="/js/hugo-learn.js?1785395966"></script>
 
-    <link href="/mermaid/mermaid.css?1785381714" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785381714"></script>
+    <link href="/mermaid/mermaid.css?1785395966" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785395966"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

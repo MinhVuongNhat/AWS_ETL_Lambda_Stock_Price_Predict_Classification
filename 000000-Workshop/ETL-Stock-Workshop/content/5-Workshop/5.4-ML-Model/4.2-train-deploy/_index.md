@@ -36,9 +36,9 @@ The script:
 | **F1 Score** | 0.5058 |
 | **AUC-ROC** | 0.5487 |
 
-> *[TODO: Add Confusion Matrix chart — `/images/4.2/confusion-matrix.png`]*
+![Confusion Matrix](/images/4.2/confusion-matrix.png)
 
-> *[TODO: Add Feature Importance chart — `/images/4.2/feature-importance.png`]*
+![Feature Importance](/images/4.2/feature-importance.png)
 
 ---
 
@@ -61,4 +61,4 @@ The predictor returns:
 }
 ```
 
-> *[TODO: Add API Gateway endpoint configuration screenshot — `/images/4.2/api-gateway-endpoint.png`]*
+![Api Gateway Endpoint](/images/4.2/api-gateway-endpoint.png)

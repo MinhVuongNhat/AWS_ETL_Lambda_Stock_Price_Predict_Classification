@@ -59,4 +59,4 @@ Label = 1  if Close(T+1) > Close(T)   → PRICE UP prediction
 Label = 0  if Close(T+1) ≤ Close(T)  → PRICE DOWN prediction
 ```
 
-> *[TODO: Add example chart of technical indicators — `/images/4.1/technical-indicators-chart.png`]*
+![Technical Indicators Chart](/images/4.1/technical-indicators-chart.png)

@@ -12,21 +12,21 @@
     <title>Tạo SQS Queue :: AWS ETL Dự đoán Giá Cổ Phiếu</title>
 
     
-    <link href="/css/nucleus.css?1785381714" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785381714" rel="stylesheet">
-    <link href="/css/hybrid.css?1785381714" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785381714" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785381714" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785381714" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785381714" rel="stylesheet">
-    <link href="/css/theme.css?1785381714" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785381714" rel="stylesheet">
+    <link href="/css/nucleus.css?1785395966" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785395966" rel="stylesheet">
+    <link href="/css/hybrid.css?1785395966" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785395966" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785395966" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785395966" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785395966" rel="stylesheet">
+    <link href="/css/theme.css?1785395966" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785395966" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785381714" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785395966" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785381714"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785395966"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785381714"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785381714"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785395966"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785395966"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785381714"></script>
+<script type="text/javascript" src="/js/search.js?1785395966"></script>
 
     
   </div>
@@ -918,9 +918,7 @@
 
 	<h4 id="tạo-amazon-sqs-queue">Tạo Amazon SQS Queue</h4>
 <p>Amazon SQS (Simple Queue Service) là trung tâm điều phối của kiến trúc <strong>Fan-Out</strong> trong Pipeline B. Lambda Producer sẽ đẩy các &ldquo;chunk&rdquo; danh sách ticker vào Queue, và các Lambda Consumer chạy song song để xử lý.</p>
-<blockquote>
-<p><em>[TODO: Thêm ảnh minh họa kiến trúc Fan-Out SQS — <code>/images/2.3/sqs-fanout-architecture.png</code>]</em></p>
-</blockquote>
+<p><img src="/images/2.3/sqs-fanout-architecture.png" alt="Sqs Fanout Architecture"></p>
 <hr>
 <h4 id="bước-1-tạo-sqs-queue">Bước 1: Tạo SQS Queue</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>aws sqs create-queue <span style="color:#ae81ff">\
@@ -968,9 +966,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;QueueUrl&#34;</span>: <span style="color:#e6db74">&#34;https://sqs.ap-southeast-1.amazonaws.com/123456789012/daily-collector-queue&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Lưu lại <strong>Queue URL</strong> này — bạn sẽ cần nó khi cấu hình biến môi trường cho Lambda.</p>
-<blockquote>
-<p><em>[TODO: Thêm ảnh màn hình SQS Queue đã tạo thành công trên AWS Console — <code>/images/2.3/sqs-queue-created.png</code>]</em></p>
-</blockquote>
+<p><img src="/images/2.3/sqs-queue-created.png" alt="Sqs Queue Created"></p>
 <hr>
 <h4 id="bước-3-cấu-hình-biến-môi-trường">Bước 3: Cấu hình biến môi trường</h4>
 <p>Tạo hoặc cập nhật file <code>.env</code> tại thư mục gốc dự án:</p>
@@ -1426,19 +1422,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785381714"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785381714"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785381714"></script>
-    <script src="/js/jquery.sticky.js?1785381714"></script>
-    <script src="/js/featherlight.min.js?1785381714"></script>
-    <script src="/js/highlight.pack.js?1785381714"></script>
+    <script src="/js/clipboard.min.js?1785395966"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785395966"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785395966"></script>
+    <script src="/js/jquery.sticky.js?1785395966"></script>
+    <script src="/js/featherlight.min.js?1785395966"></script>
+    <script src="/js/highlight.pack.js?1785395966"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785381714"></script>
-    <script src="/js/learn.js?1785381714"></script>
-    <script src="/js/hugo-learn.js?1785381714"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785395966"></script>
+    <script src="/js/learn.js?1785395966"></script>
+    <script src="/js/hugo-learn.js?1785395966"></script>
 
-    <link href="/mermaid/mermaid.css?1785381714" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785381714"></script>
+    <link href="/mermaid/mermaid.css?1785395966" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785395966"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

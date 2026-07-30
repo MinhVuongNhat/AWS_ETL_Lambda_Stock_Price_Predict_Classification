@@ -10,7 +10,7 @@ pre : " <b> 5.3.2. </b> "
 
 `lambda_quality_gate.py` receives raw data from S3 and strictly validates it before passing it to the next processing stage.
 
-> *[TODO: Add Quality Gate flow diagram — `/images/3.2/quality-gate-flow.png`]*
+![Quality Gate Flow](/images/3.2/quality-gate-flow.png)
 
 ---
 
@@ -49,4 +49,4 @@ lambda_quality_gate
 - **Memory:** `512 MB`
 - **Timeout:** `5 minutes`
 
-> *[TODO: Add screenshot of Lambda Quality Gate configuration — `/images/3.2/lambda-quality-gate-config.png`]*
+![Lambda Quality Gate Config](/images/3.2/lambda-quality-gate-config.png)

@@ -12,21 +12,21 @@
     <title>Lambda Daily Collector :: AWS ETL Dự đoán Giá Cổ Phiếu</title>
 
     
-    <link href="/css/nucleus.css?1785381714" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1785381714" rel="stylesheet">
-    <link href="/css/hybrid.css?1785381714" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1785381714" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1785381714" rel="stylesheet">
-    <link href="/css/auto-complete.css?1785381714" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1785381714" rel="stylesheet">
-    <link href="/css/theme.css?1785381714" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1785381714" rel="stylesheet">
+    <link href="/css/nucleus.css?1785395966" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1785395966" rel="stylesheet">
+    <link href="/css/hybrid.css?1785395966" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1785395966" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1785395966" rel="stylesheet">
+    <link href="/css/auto-complete.css?1785395966" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1785395966" rel="stylesheet">
+    <link href="/css/theme.css?1785395966" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1785395966" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1785381714" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1785395966" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1785381714"></script>
+    <script src="/js/jquery-3.3.1.min.js?1785395966"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1785381714"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1785381714"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1785395966"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1785395966"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1785381714"></script>
+<script type="text/javascript" src="/js/search.js?1785395966"></script>
 
     
   </div>
@@ -923,9 +923,7 @@
 <li>Chia nhỏ danh sách thành các chunk (mỗi chunk <code>CHUNK_SIZE=100</code> tickers).</li>
 <li>Gửi từng chunk như một SQS message vào <code>daily-collector-queue</code>.</li>
 </ol>
-<blockquote>
-<p><em>[TODO: Thêm ảnh minh họa luồng EventBridge → Lambda → SQS — <code>/images/3.1/eventbridge-lambda-sqs-flow.png</code>]</em></p>
-</blockquote>
+<p><img src="/images/3.1/eventbridge-lambda-sqs-flow.png" alt="Eventbridge Lambda Sqs Flow"></p>
 <hr>
 <h4 id="bước-1-tạo-lambda-function">Bước 1: Tạo Lambda Function</h4>
 <p>Truy cập <strong>AWS Lambda Console</strong> và tạo function mới:</p>
@@ -937,9 +935,7 @@
 <li><strong>Memory:</strong> <code>512 MB</code></li>
 <li><strong>Timeout:</strong> <code>5 phút</code></li>
 </ul>
-<blockquote>
-<p><em>[TODO: Thêm ảnh màn hình tạo Lambda Function — <code>/images/3.1/lambda-create-function.png</code>]</em></p>
-</blockquote>
+<p><img src="/images/3.1/lambda-create-function.png" alt="Lambda Create Function"></p>
 <hr>
 <h4 id="bước-2-cấu-hình-biến-môi-trường-lambda">Bước 2: Cấu hình biến môi trường Lambda</h4>
 <p>Trong tab <strong>Configuration → Environment variables</strong>, thêm:</p>
@@ -973,9 +969,7 @@
 			</tr>
 	</tbody>
 </table>
-<blockquote>
-<p><em>[TODO: Thêm ảnh màn hình Environment Variables trong Lambda — <code>/images/3.1/lambda-env-vars.png</code>]</em></p>
-</blockquote>
+<p><img src="/images/3.1/lambda-env-vars.png" alt="Lambda Env Vars"></p>
 <hr>
 <h4 id="bước-3-thiết-lập-eventbridge-trigger">Bước 3: Thiết lập EventBridge Trigger</h4>
 <p>Tạo <strong>EventBridge Rule</strong> để kích hoạt Lambda tự động hàng ngày:</p>
@@ -993,9 +987,7 @@
 <div class="notices info" ><p>Lịch <code>cron(0 0 ? * MON-FRI *)</code> nghĩa là <strong>0:00 UTC từ Thứ Hai đến Thứ Sáu</strong> — tương ứng với sau khi thị trường Mỹ đóng cửa (7:00 AM giờ Việt Nam).</p>
 </div>
 
-<blockquote>
-<p><em>[TODO: Thêm ảnh màn hình EventBridge Rule đã tạo — <code>/images/3.1/eventbridge-rule.png</code>]</em></p>
-</blockquote>
+<p><img src="/images/3.1/eventbridge-rule.png" alt="Eventbridge Rule"></p>
 <hr>
 <h4 id="bước-4-test-thủ-công-lambda">Bước 4: Test thủ công Lambda</h4>
 <p>Tạo test event trong Lambda Console để kiểm tra hoạt động:</p>
@@ -1004,9 +996,7 @@
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;detail-type&#34;</span>: <span style="color:#e6db74">&#34;Scheduled Event&#34;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Kiểm tra CloudWatch Logs để xác nhận Lambda đã đọc tickers và gửi SQS messages thành công.</p>
-<blockquote>
-<p><em>[TODO: Thêm ảnh CloudWatch Logs của Lambda chạy thành công — <code>/images/3.1/cloudwatch-logs.png</code>]</em></p>
-</blockquote>
+<p><img src="/images/3.1/cloudwatch-logs.png" alt="Cloudwatch Logs"></p>
 <hr>
 <h4 id="cấu-hình-lambda-collector-consumer">Cấu hình Lambda Collector Consumer</h4>
 <p><code>lambda_collector_producer.py</code> là Lambda Consumer nhận SQS messages và cào dữ liệu từ Yahoo Finance:</p>
@@ -1450,19 +1440,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1785381714"></script>
-    <script src="/js/perfect-scrollbar.min.js?1785381714"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1785381714"></script>
-    <script src="/js/jquery.sticky.js?1785381714"></script>
-    <script src="/js/featherlight.min.js?1785381714"></script>
-    <script src="/js/highlight.pack.js?1785381714"></script>
+    <script src="/js/clipboard.min.js?1785395966"></script>
+    <script src="/js/perfect-scrollbar.min.js?1785395966"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1785395966"></script>
+    <script src="/js/jquery.sticky.js?1785395966"></script>
+    <script src="/js/featherlight.min.js?1785395966"></script>
+    <script src="/js/highlight.pack.js?1785395966"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1785381714"></script>
-    <script src="/js/learn.js?1785381714"></script>
-    <script src="/js/hugo-learn.js?1785381714"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1785395966"></script>
+    <script src="/js/learn.js?1785395966"></script>
+    <script src="/js/hugo-learn.js?1785395966"></script>
 
-    <link href="/mermaid/mermaid.css?1785381714" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1785381714"></script>
+    <link href="/mermaid/mermaid.css?1785395966" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1785395966"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

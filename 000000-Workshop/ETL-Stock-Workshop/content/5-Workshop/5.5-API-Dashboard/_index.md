@@ -34,7 +34,7 @@ Lambda `nasdaq-stock-predictor` is exposed via **AWS API Gateway** as a REST end
 }
 ```
 
-> *[TODO: Add screenshot of API Gateway test — `/images/5/api-gateway-test.png`]*
+![Api Gateway Test](/images/5/api-gateway-test.png)
 
 ---
 
@@ -46,9 +46,9 @@ streamlit run dashboard/streamlit_app.py
 
 Open browser at `http://localhost:8501`.
 
-> *[TODO: Add Dashboard Top Buy Signals screenshot — `/images/5/dashboard-top-buy.png`]*
+![Dashboard Top Buy](/images/5/dashboard-top-buy.png)
 
-> *[TODO: Add Dashboard ticker detail screenshot — `/images/5/dashboard-ticker-detail.png`]*
+![Dashboard Ticker Detail](/images/5/dashboard-ticker-detail.png)
 
 ---
 

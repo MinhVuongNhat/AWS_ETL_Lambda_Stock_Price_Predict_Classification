@@ -72,4 +72,4 @@ Enter your:
 - **Default region:** `ap-southeast-1`
 - **Default output format:** `json`
 
-> *[TODO: Add screenshot of AWS CLI configuration — `/images/2.1/aws-cli-configure.png`]*
+![Aws Cli Configure](/images/2.1/aws-cli-configure.png)

@@ -72,4 +72,4 @@ Nhập các thông tin:
 - **Default region:** `ap-southeast-1`
 - **Default output format:** `json`
 
-> *[TODO: Thêm ảnh màn hình cấu hình AWS CLI — `/images/2.1/aws-cli-configure.png`]*
+![Aws Cli Configure](/images/2.1/aws-cli-configure.png)

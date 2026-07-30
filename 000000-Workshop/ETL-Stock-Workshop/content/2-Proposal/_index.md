@@ -17,7 +17,7 @@ pre : " <b> 2. </b> "
 | Field | Details |
 |:---|:---|
 | **Project Title** | END-TO-END DATA PIPELINE & BACKTESTING ENGINE FOR STOCK MARKET DIRECTION |
-| **Authors** | Vương Nhật Minh, Phạm Đức Hoài Nam |
+| **Authors** | Vương Nhật Minh - 2212094, Phạm Đức Hoài Nam - 2212157, Doãn Anh Khôi - 2352601, Trần Quốc Khánh - 2311538 |
 | **Supervisor** | Lữ Hoàn Thiện |
 | **Start Date** | June 8, 2026 |
 | **End Date** | July 31, 2026 |

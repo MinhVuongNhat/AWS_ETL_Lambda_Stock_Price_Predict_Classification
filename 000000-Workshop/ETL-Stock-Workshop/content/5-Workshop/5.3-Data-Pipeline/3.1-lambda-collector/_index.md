@@ -14,7 +14,7 @@ pre : " <b> 5.3.1. </b> "
 2. Splits the list into chunks (`CHUNK_SIZE=100` tickers each).
 3. Sends each chunk as an SQS message to `daily-collector-queue`.
 
-> *[TODO: Add flow diagram: EventBridge → Lambda → SQS — `/images/3.1/eventbridge-lambda-sqs-flow.png`]*
+![Eventbridge Lambda Sqs Flow](/images/3.1/eventbridge-lambda-sqs-flow.png)
 
 ---
 

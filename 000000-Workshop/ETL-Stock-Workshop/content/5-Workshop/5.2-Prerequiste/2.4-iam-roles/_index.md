@@ -95,4 +95,4 @@ docker push \
     <YOUR_ACCOUNT_ID>.dkr.ecr.ap-southeast-1.amazonaws.com/nasdaq-etl-lambda:latest
 ```
 
-> *[TODO: Add screenshot of ECR Repository with pushed image — `/images/2.4/ecr-image-pushed.png`]*
+![Ecr Image Pushed](/images/2.4/ecr-image-pushed.png)

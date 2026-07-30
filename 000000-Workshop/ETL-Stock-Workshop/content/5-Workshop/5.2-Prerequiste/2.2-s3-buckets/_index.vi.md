@@ -45,7 +45,7 @@ aws s3 mb s3://my-nasdaq-stock-simulation-2026-ap-southeast-1 \
     --region ap-southeast-1
 ```
 
-> *[TODO: Thêm ảnh màn hình S3 buckets đã tạo thành công — `/images/2.2/s3-buckets-created.png`]*
+![S3 Buckets Created](/images/2.2/s3-buckets-created.png)
 
 ---
 
@@ -74,7 +74,7 @@ File `tickers.json` chứa danh sách hơn **3,000+ mã cổ phiếu NASDAQ** c�
 python upload_tickers_config.py --file tickers.json
 ```
 
-> *[TODO: Thêm ảnh màn hình file tickers.json đã upload lên S3 — `/images/2.2/s3-tickers-uploaded.png`]*
+![S3 Tickers Uploaded](/images/2.2/s3-tickers-uploaded.png)
 
 {{%notice tip%}}
 Bạn có thể cập nhật danh sách mã cổ phiếu mới nhất từ NASDAQ bằng lệnh:

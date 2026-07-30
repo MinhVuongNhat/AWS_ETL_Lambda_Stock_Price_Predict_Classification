@@ -84,4 +84,4 @@ Hoặc chạy pipeline ETL hoàn chỉnh để kiểm tra:
 python debug_daily_pipeline.py
 ```
 
-> *[TODO: Thêm ảnh biểu đồ ví dụ các chỉ báo kỹ thuật trên một mã cổ phiếu — `/images/4.1/technical-indicators-chart.png`]*
+![Technical Indicators Chart](/images/4.1/technical-indicators-chart.png)

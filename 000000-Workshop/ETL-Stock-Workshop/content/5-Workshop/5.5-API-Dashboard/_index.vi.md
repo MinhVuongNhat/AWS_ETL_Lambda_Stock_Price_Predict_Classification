@@ -49,7 +49,7 @@ curl -X POST \
     -d '{"ticker": "AAPL"}'
 ```
 
-> *[TODO: Thêm ảnh màn hình API Gateway đang test — `/images/5/api-gateway-test.png`]*
+![Api Gateway Test](/images/5/api-gateway-test.png)
 
 ---
 
@@ -67,9 +67,9 @@ Dashboard gồm hai trang:
 - **Trang 1 — Top Buy Signals:** Danh sách các mã cổ phiếu có xác suất tăng cao nhất theo mô hình ML.
 - **Trang 2 — Chi tiết Mã:** Biểu đồ kỹ thuật, chỉ báo và lịch sử dự đoán của một mã cụ thể.
 
-> *[TODO: Thêm ảnh màn hình Dashboard Trang 1 — Top Buy Signals — `/images/5/dashboard-top-buy.png`]*
+![Dashboard Top Buy](/images/5/dashboard-top-buy.png)
 
-> *[TODO: Thêm ảnh màn hình Dashboard Trang 2 — Chi tiết mã AAPL — `/images/5/dashboard-ticker-detail.png`]*
+![Dashboard Ticker Detail](/images/5/dashboard-ticker-detail.png)
 
 ---
 

@@ -47,11 +47,11 @@ XGBClassifier(
 
 #### Kết quả Huấn luyện
 
-> *[TODO: Thêm ảnh biểu đồ Confusion Matrix — `/images/4.2/confusion-matrix.png`]*
+![Confusion Matrix](/images/4.2/confusion-matrix.png)
 
-> *[TODO: Thêm ảnh biểu đồ Feature Importance — `/images/4.2/feature-importance.png`]*
+![Feature Importance](/images/4.2/feature-importance.png)
 
-> *[TODO: Thêm ảnh biểu đồ ROC Curve — `/images/4.2/roc-curve.png`]*
+![Roc Curve](/images/4.2/roc-curve.png)
 
 | Chỉ số | Giá trị |
 |:---|:---|
@@ -89,7 +89,7 @@ Lambda Predictor sẽ:
 3. Tính toán Feature Engineering.
 4. Trả về xác suất dự đoán `P(Tăng)` và nhãn `1/0`.
 
-> *[TODO: Thêm ảnh màn hình cấu hình Lambda Predictor — `/images/4.2/lambda-predictor-config.png`]*
+![Lambda Predictor Config](/images/4.2/lambda-predictor-config.png)
 
 ---
 
@@ -111,4 +111,4 @@ Response:
 }
 ```
 
-> *[TODO: Thêm ảnh màn hình API Gateway endpoint đã cấu hình — `/images/4.2/api-gateway-endpoint.png`]*
+![Api Gateway Endpoint](/images/4.2/api-gateway-endpoint.png)

@@ -34,7 +34,7 @@ You will practice:
 
 #### System Architecture
 
-> *[TODO: Add architecture diagram image — `/images/1-introduce/system-architecture.png`]*
+![System Architecture](/images/1-introduce/system-architecture.png)
 
 The pipeline has **three main flows**:
 
