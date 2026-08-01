@@ -20,3 +20,15 @@ This is the lab report for the project **AWS Serverless ETL Pipeline & Machine L
  5. [Workshop](5-Workshop/)
  6. [Self Evaluation](6-Self-evaluation/)
  7. [Feedback](7-Feedback/)
+
+---
+
+### Source Code
+
+> 💻 The complete source code for this project is publicly available on GitHub:
+
+**[🔗 MinhVuongNhat/AWS\_ETL\_Lambda\_Stock\_Price\_Predict\_Classification](https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification)**
+
+```
+git clone https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification.git
+```

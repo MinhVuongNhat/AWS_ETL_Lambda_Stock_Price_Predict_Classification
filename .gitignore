@@ -15,3 +15,7 @@ raw/
 processed/
 
 data/
+
+# Large files exceeding GitHub 100MB limit
+"event/25-07-2026 FCAJ x AABW/OneTeam_CommunityDay.pptx"
+OneTeam_CommunityDay.pptx

@@ -1,6 +1,9 @@
 # Change the default theme to be use when building the site with Hugo
 theme = "hugo-theme-learn"
 
+# GitHub Pages URL for the new repo
+baseURL = "https://MinhVuongNhat.github.io/AWS_Workshop_253/"
+
 # For search functionality
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
@@ -22,6 +25,7 @@ home = [ "HTML", "RSS", "JSON"]
 title = "AWS ETL Stock Price Prediction"
 weight = 1
 label = "English"
+languageName = "English"
 
 [[Languages.en.menu.shortcuts]]
 name = "<i class='fab fa-github'></i> GitHub Repo"
@@ -33,6 +37,7 @@ weight = 10
 title = "AWS ETL Dự đoán Giá Cổ Phiếu"
 weight = 2
 label = "Tiếng Việt"
+languageName = "Tiếng Việt"
 
 [[Languages.vi.menu.shortcuts]]
 name = "<i class='fab fa-github'></i> GitHub Repo"
@@ -40,8 +45,12 @@ identifier = "GitHub"
 url = "https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification"
 weight = 10
 
+[markup.goldmark.renderer]
+  unsafe = true
+
 [markup.goldmark.extensions.passthrough]
   enable = true
   [markup.goldmark.extensions.passthrough.delimiters]
     block = [['\[', '\]'], ['$$', '$$']]
     inline = [['\(', '\)']]          # khuyến nghị dùng \( ... \) thay vì $ ... $
+

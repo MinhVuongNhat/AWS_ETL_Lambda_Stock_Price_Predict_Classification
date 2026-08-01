@@ -62,3 +62,50 @@ Sau khi hoàn thành workshop này, bạn sẽ có một pipeline hoạt động
 4. `lambda_quality_gate` kiểm duyệt dữ liệu — dữ liệu hợp lệ vào `cleansed_daily/`, dữ liệu lỗi vào `quarantine/`.
 5. `lambda_daily_etl` gộp dữ liệu đã làm sạch vào kho Parquet chính `processed/`.
 6. `lambda_stock_predictor` nạp mô hình XGBoost và trả kết quả dự đoán qua **API Gateway**.
+
+---
+
+#### Mã nguồn & Repository
+
+{{% notice tip %}}
+💻 Toàn bộ mã nguồn dự án được công bố công khai trên GitHub. Clone về để thực hành cùng các bước trong workshop.
+{{% /notice %}}
+
+**Repository:** [MinhVuongNhat/AWS\_ETL\_Lambda\_Stock\_Price\_Predict\_Classification](https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification)
+
+```bash
+git clone https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification.git
+cd AWS_ETL_Lambda_Stock_Price_Predict_Classification
+```
+
+#### Cấu trúc thư mục dự án
+
+```
+AWS_ETL_Lambda_Stock_Price_Predict_Classification/
+├── src/                          # Mã nguồn các Lambda function
+│   ├── lambda_daily_collector.py    # Producer: chia tickers gửi vào SQS
+│   ├── lambda_collector_producer.py # Consumer: tải dữ liệu cổ phiếu từ Yahoo Finance
+│   ├── lambda_quality_gate.py       # Kiểm tra chất lượng dữ liệu & cách ly
+│   ├── lambda_daily_etl.py          # Feature engineering & ghi Parquet
+│   ├── lambda_stock_predictor.py    # Nạp mô hình XGBoost & dự đoán real-time
+│   └── lambda_api_handler.py        # Xử lý REST API qua API Gateway
+├── train_model.py                # Script huấn luyện mô hình ML (XGBoost)
+├── dashboard/                    # Web Dashboard (Node.js / Vite / React)
+├── tickers.json                  # Danh sách ~3.000 mã cổ phiếu NASDAQ
+├── Dockerfile                    # Đóng gói Lambda Container Image
+├── requirements.txt              # Các thư viện Python cần thiết
+└── 000000-Workshop/              # Tài liệu Hugo workshop này
+```
+
+#### Các file nguồn quan trọng
+
+| File | Mô tả |
+|:---|:---|
+| [`src/lambda_daily_collector.py`](https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification/blob/main/src/lambda_daily_collector.py) | Lambda Producer: đọc `tickers.json`, chia chunk và gửi vào SQS |
+| [`src/lambda_collector_producer.py`](https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification/blob/main/src/lambda_collector_producer.py) | Lambda Consumer: tải dữ liệu cổ phiếu qua YFinance API |
+| [`src/lambda_quality_gate.py`](https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification/blob/main/src/lambda_quality_gate.py) | Kiểm tra chất lượng dữ liệu bằng Pandera schema |
+| [`src/lambda_daily_etl.py`](https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification/blob/main/src/lambda_daily_etl.py) | Feature engineering với Polars: SMA, EMA, RSI, MACD, Bollinger Bands |
+| [`src/lambda_stock_predictor.py`](https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification/blob/main/src/lambda_stock_predictor.py) | Nạp mô hình XGBoost và dự đoán real-time |
+| [`src/lambda_api_handler.py`](https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification/blob/main/src/lambda_api_handler.py) | Xử lý API Gateway: `/predictions/latest` và `/predictions/{symbol}` |
+| [`train_model.py`](https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification/blob/main/train_model.py) | Pipeline ML đầy đủ: TimeSeriesSplit, huấn luyện XGBoost, đánh giá, upload S3 |
+| [`Dockerfile`](https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification/blob/main/Dockerfile) | Định nghĩa Docker image để deploy Lambda Container lên ECR |

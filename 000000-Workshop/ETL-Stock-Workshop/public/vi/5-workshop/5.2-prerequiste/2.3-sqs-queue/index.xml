@@ -1,15 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>Tạo SQS Queue on AWS ETL Dự đoán Giá Cổ Phiếu</title>
-		<link>//localhost:1313/vi/5-workshop/5.2-prerequiste/2.3-sqs-queue/</link>
-		<description>Recent content in Tạo SQS Queue on AWS ETL Dự đoán Giá Cổ Phiếu</description>
-		<generator>Hugo</generator>
-		<language>vi</language>
-		
-		
-		
-		
-			<atom:link href="//localhost:1313/vi/5-workshop/5.2-prerequiste/2.3-sqs-queue/index.xml" rel="self" type="application/rss+xml" />
-	</channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tạo SQS Queue on AWS ETL Dự đoán Giá Cổ Phiếu</title><link>https://MinhVuongNhat.github.io/AWS_Workshop_253/vi/5-workshop/5.2-prerequiste/2.3-sqs-queue/</link><description>Recent content in Tạo SQS Queue on AWS ETL Dự đoán Giá Cổ Phiếu</description><generator>Hugo</generator><language>vi</language><atom:link href="https://MinhVuongNhat.github.io/AWS_Workshop_253/vi/5-workshop/5.2-prerequiste/2.3-sqs-queue/index.xml" rel="self" type="application/rss+xml"/></channel></rss>

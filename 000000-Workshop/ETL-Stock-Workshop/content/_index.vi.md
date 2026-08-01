@@ -20,3 +20,15 @@ chapter : false
  5. [Workshop](5-Workshop/)
  6. [Tự đánh giá](6-Self-evaluation/)
  7. [Phản hồi](7-Feedback/)
+
+---
+
+### Mã nguồn (Source Code)
+
+> 💻 Toàn bộ mã nguồn của dự án được công bố công khai trên GitHub:
+
+**[🔗 MinhVuongNhat/AWS\_ETL\_Lambda\_Stock\_Price\_Predict\_Classification](https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification)**
+
+```
+git clone https://github.com/MinhVuongNhat/AWS_ETL_Lambda_Stock_Price_Predict_Classification.git
+```
